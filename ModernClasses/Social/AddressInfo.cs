@@ -24,15 +24,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 
+#region Imports
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Xml.Serialization;
+#endregion
 
+#region Program
 namespace ModernClasses.Social
 {
     public class AddressInfo
@@ -70,7 +68,6 @@ namespace ModernClasses.Social
         public string[]? RelocaeValues(ref int result, params string[] address)
         {
             ResidenceType residence;
-
             if (address.First() is not null)
             {
                 if (Enum.TryParse(address[0], out residence))
@@ -86,7 +83,6 @@ namespace ModernClasses.Social
             {
                 return address.Reverse().ToArray();
             }
-
             return null;
         }
         public void SetValue(Elements element, string value)
@@ -110,7 +106,6 @@ namespace ModernClasses.Social
         public bool AssignValues(string address, char delimiter = '/')
         {
             int result = 0;
-
             if (!string.IsNullOrEmpty(address))
             {   // Assign tokenized values
                 var tokens = address.Split(delimiter);
@@ -127,7 +122,6 @@ namespace ModernClasses.Social
                     }
                 }
             }
-
             return result > 0;
         }
         public string[] GetElements(int convertMode = 0)
@@ -144,7 +138,6 @@ namespace ModernClasses.Social
         {
             bool result = false;
             int element = -1;
-
             if (address is not null)
             {   // Assign KeyValuePair
                 if (address.Length % 2 == 0 && address.Any(x => GetElements(-1).Contains(x.ToLower())))
@@ -184,8 +177,8 @@ namespace ModernClasses.Social
                     }
                 }
             }
-
             return result;
         }
     }
 }
+#endregion

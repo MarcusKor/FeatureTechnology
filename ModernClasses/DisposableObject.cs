@@ -35,7 +35,6 @@ namespace ModernClasses
     public class DisposableObject : IDisposable
     {
         private bool disposedValue;
-
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -44,26 +43,21 @@ namespace ModernClasses
                 {
                     DisposeManagedResources();
                 }
-
                 DisposeUnmanagedResources();
                 disposedValue = true;
             }
         }
-
         ~DisposableObject()
         {
             Debug.Assert(disposedValue, "The object is not disposed.");
             Dispose(disposing: false);
         }
-
         public void Dispose()
         {
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
         protected virtual void DisposeManagedResources() { }
-
         protected virtual void DisposeUnmanagedResources() { }
     }
 }
