@@ -1,0 +1,10 @@
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\bin\Debug\netstandard2.1\ModernClasses.deps.json
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\bin\Debug\netstandard2.1\ModernClasses.dll
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\bin\Debug\netstandard2.1\ModernClasses.pdb
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.csproj.AssemblyReference.cache
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.AssemblyInfoInputs.cache
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.AssemblyInfo.cs
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.csproj.CoreCompileInputs.cache
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.dll
+C:\Repository\GitHub\Projects\FeatureTechnology\ModernClasses\ModernClasses\obj\Debug\netstandard2.1\ModernClasses.pdb
