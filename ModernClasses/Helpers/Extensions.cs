@@ -16,29 +16,31 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: IPersonInfo.cs 
-// Date: 2022, 10, 2, 오후 10:20
+// File: Extensions.cs 
+// Date: 2022, 10, 2, 오후 11:16
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Helpers
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
-
+#region Imports
 using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ModernClasses.Interfaces
+#endregion
+#region Program
+namespace ModernClasses.Helpers
 {
-    public interface IPersonInfo : IElementAccessor
+    #region Class Extensions
+    public static class Extensions
     {
-        #region Enumerations
-        enum Elements : int
+        #region Public static methods
+        public static T[] SubArray<T>(this T[] array, int offset, int length)
         {
-            NameInfo,
-            AddressInfo
+            T[] result = new T[length];
+            Array.Copy(array, offset, result, 0, length);
+            return result;
         }
         #endregion
-
     }
+    #endregion
 }
+#endregion

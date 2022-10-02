@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ModernClasses.Social.PersonInfo">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAACAABAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Social\PersonInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ModernClasses.Social.AddressInfo">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAgAIAAAACAAAAA4AAAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Social\AddressInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ModernClasses.Social.ElementAccessor">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAIAAAAgAAAACAAAAAAAEBAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Social\ElementAccessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ModernClasses.Social.NameInfo">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAQCAAAABAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Social\NameInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ModernClasses.DisposableObject">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>DisposableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ModernClasses.Interfaces.IAddressInfo">
+    <Position X="15.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ModernClasses.Interfaces.IAddressInfo.Elements">
+        <TypeIdentifier>
+          <NewMemberFileName>Interfaces\IAddressInfo.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAgAIAAAACAAAAA4AAAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Interfaces\IAddressInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IElementAccessor">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAEBAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Interfaces\IElementAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.INameInfo">
+    <Position X="13.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ModernClasses.Interfaces.INameInfo.Elements">
+        <TypeIdentifier>
+          <NewMemberFileName>Interfaces\INameInfo.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAQCAAAABAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Interfaces\INameInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IPersonInfo">
+    <Position X="17" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ModernClasses.Interfaces.IPersonInfo.Elements">
+        <TypeIdentifier>
+          <NewMemberFileName>Interfaces\IPersonInfo.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPersonInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ModernClasses.Social.ResidenceType">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAEAAAAAAAAAAAAIAAAIAAAAAQAAAAAAAAABQAAABA=</HashCode>
+      <FileName>Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ModernClasses.Social.GenderType">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAABA=</HashCode>
+      <FileName>Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ModernClasses.Social.ContactType">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAABAAIAAAAAAAAAEAAEAAAgREAAAA=</HashCode>
+      <FileName>Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ModernClasses.Social.CaseConversionType">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

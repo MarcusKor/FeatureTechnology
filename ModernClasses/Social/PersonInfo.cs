@@ -35,13 +35,13 @@ namespace ModernClasses.Social
     {
         #region Properties
         [XmlElement]
-        public NameInfo Name { get; set; }
+        public NameInfo NameInfo { get; set; }
         [XmlElement]
-        public AddressInfo Address { get; set; }
+        public AddressInfo AddressInfo { get; set; }
         [XmlIgnore]
-        public string NameString => Name.TokenizedString;
+        public string NameString => NameInfo.TokenizedString;
         [XmlIgnore]
-        public string AddressString => Address.TokenizedString;
+        public string AddressString => AddressInfo.TokenizedString;
         #endregion
         #region Constructors
         public PersonInfo() { }
