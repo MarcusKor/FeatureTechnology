@@ -16,52 +16,42 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: DisposableObject.cs 
-// Date: 2022, 10, 2, 오전 12:40
+// File: PersonInfo.cs 
+// Date: 2022, 10, 2, 오후 10:19
 // Project: ModernClasses
-// Namespace: ModernClasses
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using System;
-using System.Diagnostics;
+using ModernClasses.Interfaces;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses
+namespace ModernClasses.Social
 {
-    #region Class DisposableObject
-    public class DisposableObject : IDisposable
+    #region Class PersonInfo
+    public class PersonInfo : ElementAccessor, IPersonInfo
     {
-        #region Fields
-        private bool disposedValue;
+        #region Properties
+        [XmlElement]
+        public NameInfo Name { get; set; }
+        [XmlElement]
+        public AddressInfo Address { get; set; }
+        [XmlIgnore]
+        public string NameString => Name.TokenizedString;
+        [XmlIgnore]
+        public string AddressString => Address.TokenizedString;
         #endregion
-        #region Protected methods
-        protected virtual void Dispose(bool disposing)
+        #region Constructors
+        public PersonInfo() { }
+        public PersonInfo(string arg, char delimiter = '/')
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    DisposeManagedResources();
-                }
-                DisposeUnmanagedResources();
-                disposedValue = true;
-            }
+            AssignValues<PersonInfo>(arg, delimiter);
         }
-        ~DisposableObject()
+        public PersonInfo(params string[] args)
         {
-            Debug.Assert(disposedValue, "The object is not disposed.");
-            Dispose(disposing: false);
-        }
-        protected virtual void DisposeManagedResources() { }
-        protected virtual void DisposeUnmanagedResources() { }
-        #endregion
-        #region Public methods
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
+            AssignValues<PersonInfo>(args);
         }
         #endregion
     }

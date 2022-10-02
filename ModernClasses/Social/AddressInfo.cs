@@ -23,162 +23,51 @@
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
-
 #region Imports
+using ModernClasses.Interfaces;
 using System;
 using System.Linq;
 using System.Xml.Serialization;
 #endregion
-
 #region Program
 namespace ModernClasses.Social
 {
-    public class AddressInfo
+    #region Class AddressInfo
+    [Serializable]
+    public class AddressInfo : ElementAccessor, IAddressInfo
     {
-        public enum Elements : int
-        {
-            ResidenceType,
-            SiteUrl,
-            GeographicLocation,
-            Street1,
-            Street2,
-            City,
-            State,
-            Country
-        }
-        public AddressInfo() { }
-        public AddressInfo(string address, char delimiter = '/')
-        {
-            AssignValues(address, delimiter);
-        }
-        public AddressInfo(params string[] address)
-        {
-            AssignValues(address);
-        }
+        #region Properties
+        [XmlAttribute]
         public ResidenceType ResidenceType { get; set; } = ResidenceType.Unknown;
+        [XmlAttribute]
         public string SiteUrl { get; set; } = string.Empty;
+        [XmlAttribute]
         public string GeographicLocation { get; set; } = string.Empty;
+        [XmlElement]
         public string Street1 { get; set; } = string.Empty;
+        [XmlElement]
         public string Street2 { get; set; } = string.Empty;
+        [XmlElement]
         public string City { get; set; } = string.Empty;
+        [XmlElement]
         public string State { get; set; } = string.Empty;
+        [XmlElement]
         public string Country { get; set; } = string.Empty;
         [XmlIgnore]
-        public string TokenizedAddress => $"{ResidenceType}/{SiteUrl}/{GeographicLocation}/{Street1}/{Street2}/{City}/{State}/{Country}";
-        public string[]? RelocaeValues(ref int result, params string[] address)
+        public string TokenizedString => $"{ResidenceType}{TokenDelimiter}{SiteUrl}{TokenDelimiter}{GeographicLocation}{TokenDelimiter}{Street1}{TokenDelimiter}{Street2}{TokenDelimiter}{City}{TokenDelimiter}{State}{TokenDelimiter}{Country}";
+        #endregion
+        #region Constructors
+        public AddressInfo() { }
+        public AddressInfo(string arg, char delimiter = '/')
         {
-            ResidenceType residence;
-            if (address.First() is not null)
-            {
-                if (Enum.TryParse(address[0], out residence))
-                {
-                    return address;
-                }
-                else if (Enum.TryParse(address.Last(), out residence))
-                {
-                    return address.Reverse().ToArray();
-                }
-            }
-            else if (address.Last() is not null && Enum.TryParse(address.Last(), out residence))
-            {
-                return address.Reverse().ToArray();
-            }
-            return null;
+            AssignValues<AddressInfo>(arg, delimiter);
         }
-        public void SetValue(Elements element, string value)
+        public AddressInfo(params string[] args)
         {
-            switch (element)
-            {
-                case Elements.ResidenceType:
-                    {
-                        if (Enum.TryParse(value, out ResidenceType residence)) ResidenceType = residence;
-                    }
-                    break;
-                case Elements.SiteUrl: SiteUrl = value; break;
-                case Elements.GeographicLocation: GeographicLocation = value; break;
-                case Elements.Street1: Street1 = value; break;
-                case Elements.Street2: Street2 = value; break;
-                case Elements.City: City = value; break;
-                case Elements.State: State = value; break;
-                case Elements.Country: Country = value; break;
-            }
+            AssignValues<AddressInfo>(args);
         }
-        public bool AssignValues(string address, char delimiter = '/')
-        {
-            int result = 0;
-            if (!string.IsNullOrEmpty(address))
-            {   // Assign tokenized values
-                var tokens = address.Split(delimiter);
-                if (tokens.Length == Enum.GetValues(typeof(Elements)).Length)
-                {
-                    var relocatedValues = RelocaeValues(ref result, tokens);
-
-                    if (relocatedValues is not null)
-                    {
-                        for (int i = 0; i < relocatedValues.Length; i++)
-                        {
-                            SetValue((Elements)i, relocatedValues[i]);
-                        }
-                    }
-                }
-            }
-            return result > 0;
-        }
-        public string[] GetElements(int convertMode = 0)
-        {
-            switch (convertMode)
-            {
-                case -1: return Enum.GetValues(typeof(Elements)).Cast<int>().Select(x => x.ToString().ToLower()).ToArray();
-                case 1: return Enum.GetValues(typeof(Elements)).Cast<int>().Select(x => x.ToString().ToUpper()).ToArray();
-                default:
-                case 0: return Enum.GetValues(typeof(Elements)).Cast<int>().Select(x => x.ToString()).ToArray();
-            }
-        }
-        public bool AssignValues(params string[] address)
-        {
-            bool result = false;
-            int element = -1;
-            if (address is not null)
-            {   // Assign KeyValuePair
-                if (address.Length % 2 == 0 && address.Any(x => GetElements(-1).Contains(x.ToLower())))
-                {
-                    foreach (string value in address)
-                    {
-                        switch (value.ToLower())
-                        {
-                            case "residencetype": element = (int)Elements.ResidenceType; break;
-                            case "siteurl": element = (int)Elements.SiteUrl; break;
-                            case "geographiclocation": element = (int)Elements.GeographicLocation; break;
-                            case "stree1": element = (int)Elements.Street1; break;
-                            case "stree2": element = (int)Elements.Street2; break;
-                            case "city": element = (int)Elements.City; break;
-                            case "state": element = (int)Elements.State; break;
-                            case "country": element = (int)Elements.Country; break;
-                            default:
-                                {
-                                    SetValue((Elements)element, value);
-                                    result = true;
-                                }
-                                break;
-                        }
-                    }
-                }
-                else if (address.Length == Enum.GetValues(typeof(Elements)).Length)
-                {   // Assign sequencial values
-                    var relocatedValues = RelocaeValues(ref element, address);
-
-                    if (relocatedValues is not null)
-                    {
-                        for (int i = 0; i < relocatedValues.Length; i++)
-                        {
-                            SetValue((Elements)i, relocatedValues[i]);
-                            result = true;
-                        }
-                    }
-                }
-            }
-            return result;
-        }
+        #endregion
     }
+    #endregion
 }
 #endregion

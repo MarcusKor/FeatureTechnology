@@ -16,61 +16,29 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Enumerations.cs 
-// Date: 2022, 10, 2, 오전 12:27
+// File: IPersonInfo.cs 
+// Date: 2022, 10, 2, 오후 10:20
 // Project: ModernClasses
-// Namespace: ModernClasses.Social
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
-#region Imports
+
 using System;
-#endregion
-#region Program
-namespace ModernClasses.Social
+using System.Collections.Generic;
+using System.Text;
+
+namespace ModernClasses.Interfaces
 {
-    #region Residence type
-    public enum ResidenceType
+    public interface IPersonInfo : IElementAccessor
     {
-        Unknown,
-        Home,
-        Company,
-        Office,
-        Factory,
-        Store,
-        Garage,
-        Misc
+        #region Enumerations
+        enum Elements : int
+        {
+            Name,
+            Address
+        }
+        #endregion
+
     }
-    #endregion
-    #region Gender type
-    public enum GenderType
-    {
-        Unknown = -1,
-        Female,
-        Male
-    }
-    #endregion
-    #region Contact type
-    public enum ContactType
-    {
-        None = -1,
-        InstantMessenger,
-        SocialNetworkService,
-        Mail,
-        MobilePhone,
-        HomeTelephone,
-        OfficeTelephone,
-        Fax,
-        PostalService
-    }
-    #endregion
-    #region Case conversion type
-    public enum CaseConversionType
-    {
-        None = -1,
-        ToLower,
-        ToUpper
-    }
-    #endregion
 }
-#endregion

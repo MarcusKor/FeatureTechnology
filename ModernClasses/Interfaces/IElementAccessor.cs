@@ -16,53 +16,32 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: DisposableObject.cs 
-// Date: 2022, 10, 2, 오전 12:40
+// File: IElementHelper.cs 
+// Date: 2022, 10, 2, 오후 9:00
 // Project: ModernClasses
-// Namespace: ModernClasses
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Social;
+using System.Linq;
 using System;
-using System.Diagnostics;
 #endregion
 #region Program
-namespace ModernClasses
+namespace ModernClasses.Interfaces
 {
-    #region Class DisposableObject
-    public class DisposableObject : IDisposable
+    #region Interface IElementAccessor
+    public interface IElementAccessor
     {
-        #region Fields
-        private bool disposedValue;
-        #endregion
-        #region Protected methods
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    DisposeManagedResources();
-                }
-                DisposeUnmanagedResources();
-                disposedValue = true;
-            }
-        }
-        ~DisposableObject()
-        {
-            Debug.Assert(disposedValue, "The object is not disposed.");
-            Dispose(disposing: false);
-        }
-        protected virtual void DisposeManagedResources() { }
-        protected virtual void DisposeUnmanagedResources() { }
+        #region Properties
+        char TokenDelimiter { get; }
         #endregion
         #region Public methods
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
+        T GetElement<T>(string elementName, CaseConversionType caseConversionType = 0);
+        string[] GetElements<T>(CaseConversionType caseConversionType = 0);
+        bool AssignValues<T>(string args, char delimiter = '/');
+        bool AssignValues<T>(params string[] args);
         #endregion
     }
     #endregion

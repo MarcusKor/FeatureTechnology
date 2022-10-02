@@ -16,52 +16,48 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: DisposableObject.cs 
-// Date: 2022, 10, 2, 오전 12:40
+// File: NameInfo.cs 
+// Date: 2022, 10, 2, 오후 9:33
 // Project: ModernClasses
-// Namespace: ModernClasses
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Interfaces;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses
+namespace ModernClasses.Social
 {
-    #region Class DisposableObject
-    public class DisposableObject : IDisposable
+    #region Class NameInfo
+    [Serializable]
+    public class NameInfo : ElementAccessor, INameInfo
     {
-        #region Fields
-        private bool disposedValue;
+        #region Properties
+        [XmlElement]
+        public string FirstName { get; set; } = string.Empty;
+        [XmlElement]
+        public string MiddleName { get; set; } = string.Empty;
+        [XmlElement]
+        public string LastName { get; set; } = string.Empty;
+        [XmlAttribute]
+        public string Nick { get; set; } = string.Empty;
+        [XmlIgnore]
+        public string TokenizedString => $"{Nick}{TokenDelimiter}{FirstName}{TokenDelimiter}{MiddleName}{TokenDelimiter}{LastName}";
         #endregion
-        #region Protected methods
-        protected virtual void Dispose(bool disposing)
+        #region Constructors
+        public NameInfo() { }
+        public NameInfo(string arg, char delimiter = '/')
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    DisposeManagedResources();
-                }
-                DisposeUnmanagedResources();
-                disposedValue = true;
-            }
+            AssignValues<NameInfo>(arg, delimiter);
         }
-        ~DisposableObject()
+        public NameInfo(params string[] args)
         {
-            Debug.Assert(disposedValue, "The object is not disposed.");
-            Dispose(disposing: false);
-        }
-        protected virtual void DisposeManagedResources() { }
-        protected virtual void DisposeUnmanagedResources() { }
-        #endregion
-        #region Public methods
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
+            AssignValues<NameInfo>(args);
         }
         #endregion
     }

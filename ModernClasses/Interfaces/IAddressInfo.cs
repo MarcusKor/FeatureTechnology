@@ -16,53 +16,45 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: DisposableObject.cs 
-// Date: 2022, 10, 2, 오전 12:40
+// File: IAddressInfo.cs 
+// Date: 2022, 10, 2, 오후 7:39
 // Project: ModernClasses
-// Namespace: ModernClasses
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using System;
-using System.Diagnostics;
+using ModernClasses.Social;
 #endregion
 #region Program
-namespace ModernClasses
+namespace ModernClasses.Interfaces
 {
-    #region Class DisposableObject
-    public class DisposableObject : IDisposable
+    #region Interface IAddressInfo
+    public interface IAddressInfo : IElementAccessor
     {
-        #region Fields
-        private bool disposedValue;
+        #region Enumerations
+        enum Elements : int
+        {
+            ResidenceType,
+            SiteUrl,
+            GeographicLocation,
+            Street1,
+            Street2,
+            City,
+            State,
+            Country
+        }
         #endregion
-        #region Protected methods
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    DisposeManagedResources();
-                }
-                DisposeUnmanagedResources();
-                disposedValue = true;
-            }
-        }
-        ~DisposableObject()
-        {
-            Debug.Assert(disposedValue, "The object is not disposed.");
-            Dispose(disposing: false);
-        }
-        protected virtual void DisposeManagedResources() { }
-        protected virtual void DisposeUnmanagedResources() { }
-        #endregion
-        #region Public methods
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
+        #region Properties
+        ResidenceType ResidenceType { get; set; }
+        string SiteUrl { get; set; }
+        string GeographicLocation { get; set; }
+        string Street1 { get; set; }
+        string Street2 { get; set; }
+        string City { get; set; }
+        string State { get; set; }
+        string Country { get; set; }
+        string TokenizedString { get; }
         #endregion
     }
     #endregion

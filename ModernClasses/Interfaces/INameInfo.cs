@@ -16,53 +16,39 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: DisposableObject.cs 
-// Date: 2022, 10, 2, 오전 12:40
+// File: NameInfo.cs 
+// Date: 2022, 10, 2, 오후 9:24
 // Project: ModernClasses
-// Namespace: ModernClasses
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Text;
 #endregion
 #region Program
-namespace ModernClasses
+namespace ModernClasses.Interfaces
 {
-    #region Class DisposableObject
-    public class DisposableObject : IDisposable
+    #region Interface INameInfo
+    public interface INameInfo : IElementAccessor
     {
-        #region Fields
-        private bool disposedValue;
+        #region Enumerations
+        enum Elements : int
+        {
+            FirstName,
+            MiddleName,
+            LastName,
+            Nick
+        }
         #endregion
-        #region Protected methods
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    DisposeManagedResources();
-                }
-                DisposeUnmanagedResources();
-                disposedValue = true;
-            }
-        }
-        ~DisposableObject()
-        {
-            Debug.Assert(disposedValue, "The object is not disposed.");
-            Dispose(disposing: false);
-        }
-        protected virtual void DisposeManagedResources() { }
-        protected virtual void DisposeUnmanagedResources() { }
-        #endregion
-        #region Public methods
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
+        #region Properties
+        string FirstName { get; set; }
+        string MiddleName { get; set; }
+        string LastName { get; set; }
+        string Nick { get; set; }
+        string TokenizedString { get; }
         #endregion
     }
     #endregion
