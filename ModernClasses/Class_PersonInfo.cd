@@ -16,14 +16,6 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ModernClasses.Social.ElementAccessor">
-    <Position X="4.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAIAAAAgAAAACAAAAAAAEBAAAAAAAAAAAIAAA=</HashCode>
-      <FileName>Social\ElementAccessor.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="ModernClasses.Social.NameInfo">
     <Position X="6.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
@@ -40,13 +32,21 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="ModernClasses.Social.PropertyAccessor">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABCAAgIAAAAgAAAACAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Social\PropertyAccessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="ModernClasses.Interfaces.IAddressInfo">
     <Position X="15.25" Y="1.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="ModernClasses.Interfaces.IAddressInfo.Elements">
+      <Enum Name="ModernClasses.Interfaces.IAddressInfo.Properties">
         <TypeIdentifier>
           <NewMemberFileName>Interfaces\IAddressInfo.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -57,20 +57,13 @@
       <FileName>Interfaces\IAddressInfo.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="ModernClasses.Interfaces.IElementAccessor">
-    <Position X="11.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAEBAAAAAAAAAAAIAAA=</HashCode>
-      <FileName>Interfaces\IElementAccessor.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="ModernClasses.Interfaces.INameInfo">
     <Position X="13.5" Y="2" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="ModernClasses.Interfaces.INameInfo.Elements">
+      <Enum Name="ModernClasses.Interfaces.INameInfo.Properties">
         <TypeIdentifier>
           <NewMemberFileName>Interfaces\INameInfo.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -87,7 +80,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="ModernClasses.Interfaces.IPersonInfo.Elements">
+      <Enum Name="ModernClasses.Interfaces.IPersonInfo.Properties">
         <TypeIdentifier>
           <NewMemberFileName>Interfaces\IPersonInfo.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -96,6 +89,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IPersonInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IPropertyAccessor">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABAAAAAAAAAAAAAACAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPropertyAccessor.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="ModernClasses.Social.ResidenceType">

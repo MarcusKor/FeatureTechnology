@@ -25,33 +25,44 @@
 #endregion
 #region Imports
 using ModernClasses.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 #endregion
 #region Program
 namespace ModernClasses.Social
 {
     #region Class PersonInfo
-    public class PersonInfo : ElementAccessor, IPersonInfo
+    public class PersonInfo : PropertyAccessor, IPersonInfo
     {
         #region Properties
         [XmlElement]
         public NameInfo NameInfo { get; set; }
-        [XmlElement]
-        public AddressInfo AddressInfo { get; set; }
+        [XmlArrayItem("Address")]
+        [XmlArray("Addresses")]
+        public List<AddressInfo> AddressInfos { get; set; }
+        [XmlArrayItem("Phone")]
+        [XmlArray("Phones")]
+        public List<PhoneInfo> PhoneInfos { get; set; }
+        [XmlArrayItem("MailAccount")]
+        [XmlArray("MailAccounts")]
+        public List<MailInfo> MailInfos { get; set; }
         [XmlIgnore]
-        public string NameString => NameInfo.TokenizedString;
+        public string FullName => NameInfo.TokenizedString;
         [XmlIgnore]
-        public string AddressString => AddressInfo.TokenizedString;
+        public string Nick => NameInfo.NickNames.FirstOrDefault();
+        [XmlIgnore]
+        public string? Address1 => AddressInfos.First()?.TokenizedString;
         #endregion
         #region Constructors
         public PersonInfo() { }
         public PersonInfo(string arg, char delimiter = '/')
         {
-            AssignValues<PersonInfo>(arg, delimiter);
+            AssignValues<IPersonInfo.Properties>(arg, delimiter);
         }
         public PersonInfo(params string[] args)
         {
-            AssignValues<PersonInfo>(args);
+            AssignValues<IPersonInfo.Properties>(args);
         }
         #endregion
     }

@@ -26,6 +26,8 @@
 #region Imports
 using ModernClasses.Interfaces;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -34,48 +36,29 @@ using System.Xml.Serialization;
 #region Program
 namespace ModernClasses.Social
 {
-    #region Class ElementAccessor
+    #region Class PropertyAccessor
     [Serializable]
-    public abstract class ElementAccessor : DisposableObject, IElementAccessor
+    public abstract class PropertyAccessor : DisposableObject, IPropertyAccessor
     {
         #region Properties
         [XmlAttribute]
         public char TokenDelimiter { get; protected set; } = '/';
         #endregion
         #region Protected methods
-        protected virtual string[]? RelocateValues(ref int result, params string[] args)
-        {
-            ResidenceType residence;
-            if (args.First() is not null)
-            {
-                if (Enum.TryParse(args[0], out residence))
-                {
-                    return args;
-                }
-                else if (Enum.TryParse(args.Last(), out residence))
-                {
-                    return args.Reverse().ToArray();
-                }
-            }
-            else if (args.Last() is not null && Enum.TryParse(args.Last(), out residence))
-            {
-                return args.Reverse().ToArray();
-            }
-            return null;
-        }
         #endregion
         #region Public methods
-        public virtual T GetElement<T>(string element, CaseConversionType caseConversion = CaseConversionType.ToLower)
+        public virtual T GetProperty<T>(string element, CaseConversionType caseConversion = CaseConversionType.None)
         {
-            return (T)Enum.ToObject(typeof(T), GetElements<T>(caseConversion).Where(x => x == element).Select(x => x.IndexOf(x)));
+            return (T)Enum.ToObject(typeof(T), GetAllPropertyNames<T>(caseConversion).Where(x => x == element).Select(x => x.IndexOf(x)));
         }
-        public virtual string[] GetElements<T>(CaseConversionType caseConversion = 0)
+        public virtual string[] GetAllPropertyNames<T>(CaseConversionType caseConversion = CaseConversionType.None)
         {
+            ArrayList arrList = new ArrayList();
             return caseConversion switch
-            {
-                CaseConversionType.ToLower => Enum.GetValues(typeof(T)).Cast<int>().Select(x => x.ToString().ToLower()).ToArray(),
-                CaseConversionType.ToUpper => Enum.GetValues(typeof(T)).Cast<int>().Select(x => x.ToString().ToUpper()).ToArray(),
-                _ => Enum.GetValues(typeof(T)).Cast<int>().Select(x => x.ToString()).ToArray(),
+            {   
+                CaseConversionType.ToLower => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString().ToLower()).ToArray(),
+                CaseConversionType.ToUpper => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString().ToUpper()).ToArray(),
+                _ => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString()).ToArray(),
             };
         }
         public virtual bool AssignValues<T>(string args, char delimiter = '/')
@@ -83,24 +66,18 @@ namespace ModernClasses.Social
             int result = 0;
             if (!string.IsNullOrEmpty(args))
             {   // Assign tokenized values
+                var properties = Enum.GetValues(typeof(T));
                 var tokens = args.Split(TokenDelimiter = delimiter);
-                if (tokens.Length == Enum.GetValues(typeof(T)).Length)
+                for (int i = 0; i < tokens.Length; i++)
                 {
-                    var relocatedValues = RelocateValues(ref result, tokens);
-                    if (relocatedValues is not null)
+                    var property = properties.GetValue(i);
+                    if (property != null)
                     {
-                        for (int i = 0; i < relocatedValues.Length; i++)
-                        {
-                            var property = (T)Convert.ChangeType(i, typeof(T));
-                            if (property != null)
-                            {
-                                SetValue(this, nameof(property), relocatedValues[i]);
-                            }
-                            else
-                            {
-                                Trace.WriteLine($"Property={property} is not available!");
-                            }
-                        }
+                        SetValue(this, nameof(property), tokens[i]);
+                    }
+                    else
+                    {
+                        Trace.WriteLine($"Property={property} is not available!");
                     }
                 }
             }
@@ -109,14 +86,13 @@ namespace ModernClasses.Social
         public virtual bool AssignValues<T>(params string[] args)
         {
             bool result = false;
-            int element = -1;
             if (args is not null)
             {   // Assign KeyValuePair
-                if (args.Length % 2 == 0 && args.Any(x => GetElements<T>(CaseConversionType.ToLower).Contains(x.ToLower())))
+                if (args.Length % 2 == 0 && args.Any(x => GetAllPropertyNames<T>().Contains(x)))
                 {
                     foreach (string value in args)
                     {
-                        var property = GetElement<T>(value.ToLower(), CaseConversionType.None);
+                        var property = GetProperty<T>(value.ToLower());
                         if (property != null)
                         {
                             SetValue(this, nameof(property), value);
@@ -129,32 +105,39 @@ namespace ModernClasses.Social
                 }
                 else if (args.Length == Enum.GetValues(typeof(T)).Length)
                 {   // Assign sequencial values
-                    var relocatedValues = RelocateValues(ref element, args);
-                    if (relocatedValues is not null)
+                    var properties = Enum.GetValues(typeof(T));
+                    for (int i = 0; i < properties.Length; i++)
                     {
-                        for (int i = 0; i < relocatedValues.Length; i++)
+                        var property = properties.GetValue(i);
+                        if (property != null)
                         {
-                            var property = (T)Convert.ChangeType(i, typeof(T));
-                            if (property != null)
-                            {
-                                SetValue(this, nameof(property), relocatedValues[i]);
-                            }
-                            else
-                            {
-                                Trace.WriteLine($"Property={property} is not available!");
-                            }
+                            SetValue(this, nameof(property), args[i]);
+                        }
+                        else
+                        {
+                            Trace.WriteLine($"Property={property} is not available!");
                         }
                     }
                 }
             }
             return result;
         }
+        public static Dictionary<string, PropertyInfo> GetAllPropertyInfo<T>(BindingFlags bindingAttr = BindingFlags.Default)
+        {
+            Dictionary<string, PropertyInfo> result = new ();
+            foreach (var property in typeof(T).GetProperties(bindingAttr))
+            {
+                result.Add(property.Name, property);
+            }
+            return result;
+        }
+        public static T GetValue<T>(object src, string property) => (T)GetValue(src, property);
         public static object GetValue(object src, string property) => src.GetType().GetProperty(property).GetValue(src, null);
         public static void SetValue(object src, string property, object value)
         {
             try
             {
-                PropertyInfo propertyInfo = src.GetType().GetProperty(property);
+                var propertyInfo = src.GetType().GetProperty(property);
                 propertyInfo?.SetValue(src, value);
             }
             catch (Exception ex)

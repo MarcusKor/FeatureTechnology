@@ -34,25 +34,44 @@ namespace ModernClasses.Social
 {
     #region Class AddressInfo
     [Serializable]
-    public class AddressInfo : ElementAccessor, IAddressInfo
+    public class AddressInfo : PropertyAccessor, IAddressInfo
     {
         #region Properties
+
+        [XmlIgnore]
+        private string? residenceType { get; set; }
         [XmlAttribute]
-        public ResidenceType ResidenceType { get; set; } = ResidenceType.Unknown;
+        public string ResidenceType
+        {
+            get => residenceType ?? string.Empty;
+            set => residenceType = value;
+        }
+        [XmlIgnore]
+        private string? siteUrl { get; set; }
         [XmlAttribute]
-        public string SiteUrl { get; set; } = string.Empty;
+        public string SiteUrl
+        {
+            get => siteUrl ?? string.Empty;
+            set => siteUrl = value;
+        }
+        [XmlIgnore]
+        private string? geoGraphicLocation { get; set; }
         [XmlAttribute]
-        public string GeographicLocation { get; set; } = string.Empty;
-        [XmlElement]
-        public string Street1 { get; set; } = string.Empty;
-        [XmlElement]
-        public string Street2 { get; set; } = string.Empty;
-        [XmlElement]
-        public string City { get; set; } = string.Empty;
-        [XmlElement]
-        public string State { get; set; } = string.Empty;
-        [XmlElement]
-        public string Country { get; set; } = string.Empty;
+        public string GeographicLocation
+        {
+            get => geoGraphicLocation ?? string.Empty;
+            set => geoGraphicLocation = value;
+        }
+        [XmlElement(IsNullable = true)]
+        public string Street1 { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Street2 { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string City { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string State { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Country { get; set; }
         [XmlIgnore]
         public string TokenizedString => $"{ResidenceType}{TokenDelimiter}{SiteUrl}{TokenDelimiter}{GeographicLocation}{TokenDelimiter}{Street1}{TokenDelimiter}{Street2}{TokenDelimiter}{City}{TokenDelimiter}{State}{TokenDelimiter}{Country}";
         #endregion
@@ -60,11 +79,11 @@ namespace ModernClasses.Social
         public AddressInfo() { }
         public AddressInfo(string arg, char delimiter = '/')
         {
-            AssignValues<AddressInfo>(arg, delimiter);
+            AssignValues<IAddressInfo.Properties>(arg, delimiter);
         }
         public AddressInfo(params string[] args)
         {
-            AssignValues<AddressInfo>(args);
+            AssignValues<IAddressInfo.Properties>(args);
         }
         #endregion
     }

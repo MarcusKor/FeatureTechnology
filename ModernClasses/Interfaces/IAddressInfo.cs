@@ -30,10 +30,10 @@ using ModernClasses.Social;
 namespace ModernClasses.Interfaces
 {
     #region Interface IAddressInfo
-    public interface IAddressInfo : IElementAccessor
+    public interface IAddressInfo : IPropertyAccessor
     {
         #region Enumerations
-        enum Elements : int
+        enum Properties : int
         {
             ResidenceType,
             SiteUrl,
@@ -46,7 +46,7 @@ namespace ModernClasses.Interfaces
         }
         #endregion
         #region Properties
-        ResidenceType ResidenceType { get; set; }
+        string ResidenceType { get; set; }
         string SiteUrl { get; set; }
         string GeographicLocation { get; set; }
         string Street1 { get; set; }

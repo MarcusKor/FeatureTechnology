@@ -32,22 +32,24 @@ using System.Text;
 namespace ModernClasses.Interfaces
 {
     #region Interface INameInfo
-    public interface INameInfo : IElementAccessor
+    public interface INameInfo : IPropertyAccessor
     {
         #region Enumerations
-        enum Elements : int
+        enum Properties : int
         {
             FirstName,
             MiddleName,
             LastName,
-            Nick
+            Nick,
+            Honorifics
         }
         #endregion
         #region Properties
         string FirstName { get; set; }
         string MiddleName { get; set; }
         string LastName { get; set; }
-        string Nick { get; set; }
+        List<string> NickNames { get; set; }
+        string Honorifics { get; set; }
         string TokenizedString { get; }
         #endregion
     }

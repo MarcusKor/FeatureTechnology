@@ -24,21 +24,29 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 
+using ModernClasses.Social;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ModernClasses.Interfaces
 {
-    public interface IPersonInfo : IElementAccessor
+    public interface IPersonInfo : IPropertyAccessor
     {
         #region Enumerations
-        enum Elements : int
+        enum Properties : int
         {
             NameInfo,
-            AddressInfo
+            AddressInfos,
+            PhoneInfos,
+            MailInfos
         }
         #endregion
-
+        #region Properties
+        NameInfo NameInfo { get; set; }
+        List<AddressInfo> AddressInfos { get; set; }
+        List<PhoneInfo> PhoneInfos { get; set; }
+        List<MailInfo> MailInfos { get; set; }
+        #endregion
     }
 }

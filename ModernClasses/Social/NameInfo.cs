@@ -27,6 +27,7 @@
 using ModernClasses.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 #endregion
@@ -35,29 +36,40 @@ namespace ModernClasses.Social
 {
     #region Class NameInfo
     [Serializable]
-    public class NameInfo : ElementAccessor, INameInfo
+    public class NameInfo : PropertyAccessor, INameInfo
     {
         #region Properties
         [XmlElement]
-        public string FirstName { get; set; } = string.Empty;
+        public string FirstName { get; set; }
         [XmlElement]
-        public string MiddleName { get; set; } = string.Empty;
+        public string MiddleName { get; set; }
         [XmlElement]
-        public string LastName { get; set; } = string.Empty;
-        [XmlAttribute]
-        public string Nick { get; set; } = string.Empty;
+        public string LastName { get; set; }
+        [XmlArrayItem("Nick")]
+        [XmlArray("Nicks")]
+        public List<string> NickNames { get; set; }
         [XmlIgnore]
-        public string TokenizedString => $"{Nick}{TokenDelimiter}{FirstName}{TokenDelimiter}{MiddleName}{TokenDelimiter}{LastName}";
+        private string honorifics { get; set; }
+        [XmlAttribute]
+        public string Honorifics
+        {
+            get => honorifics ?? string.Empty;
+            set => honorifics = value;
+        }
+        [XmlIgnore]
+        public string TokenizedString => $"{FirstName}{TokenDelimiter}{MiddleName}{TokenDelimiter}{LastName}" +
+                                        $"{TokenDelimiter}{Honorifics}{TokenDelimiter}" +
+                                        string.Join(TokenDelimiter, NickNames);
         #endregion
         #region Constructors
         public NameInfo() { }
         public NameInfo(string arg, char delimiter = '/')
         {
-            AssignValues<NameInfo>(arg, delimiter);
+            AssignValues<INameInfo.Properties>(arg, delimiter);
         }
         public NameInfo(params string[] args)
         {
-            AssignValues<NameInfo>(args);
+            AssignValues<INameInfo.Properties>(args);
         }
         #endregion
     }

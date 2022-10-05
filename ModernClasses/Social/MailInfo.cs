@@ -16,34 +16,38 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: IElementHelper.cs 
-// Date: 2022, 10, 2, 오후 9:00
+// File: MailInfo.cs 
+// Date: 2022, 10, 6, 오전 1:39
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Social;
-using System.Linq;
+using ModernClasses.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlTypes;
+using System.Text;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Interfaces
+namespace ModernClasses.Social
 {
-    #region Interface IElementAccessor
-    public interface IElementAccessor
+    public class MailInfo : IMailInfo
     {
         #region Properties
-        char TokenDelimiter { get; }
-        #endregion
-        #region Public methods
-        T GetElement<T>(string elementName, CaseConversionType caseConversionType = 0);
-        string[] GetElements<T>(CaseConversionType caseConversionType = 0);
-        bool AssignValues<T>(string args, char delimiter = '/');
-        bool AssignValues<T>(params string[] args);
+        [XmlIgnore]
+        private string mailServer;
+        [XmlAttribute]
+        public string MailServer
+        {
+            get => mailServer ?? string.Empty;
+            set => mailServer = value;
+        }
+        [XmlElement(IsNullable = true)]
+        public string MailAccount { get; set; }
         #endregion
     }
-    #endregion
 }
 #endregion
