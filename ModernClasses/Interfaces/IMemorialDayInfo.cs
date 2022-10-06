@@ -16,31 +16,46 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: IMemorialDayInfo.cs 
+// Date: 2022, 10, 6, 오후 11:20
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
+using ModernClasses.Social;
 using System;
+using System.Collections.Generic;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Interfaces
 {
-    #region Class Extensions
+    #region Interface IMemorialDayInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    public interface IMemorialDayInfo : IPropertyAccessor
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        #region Enumerations
+        enum Properties : int
         {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
+            Date,
+            BeginTime,
+            EndTime,
+            Places,
+            NotificationInfo,
+            RelatedPerson,
+            PrivacyLevel
         }
+        #endregion
+        #region Properties
+        DateTime Date { get; set; }
+        DateTime BeginTime { get; set; }
+        DateTime EndTime { get; set; }
+        List<string> Places { get; set; }
+        NotificationInfo NotificationInfo { get; set; }
+        string RelatedPerson { get; set; }
+        PrivacyLevel PrivacyLevel { get; set; }
         #endregion
     }
     #endregion

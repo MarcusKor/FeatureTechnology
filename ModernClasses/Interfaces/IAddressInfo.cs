@@ -24,12 +24,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Social;
 #endregion
 #region Program
 namespace ModernClasses.Interfaces
 {
     #region Interface IAddressInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     public interface IAddressInfo : IPropertyAccessor
     {
         #region Enumerations

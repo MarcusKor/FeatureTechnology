@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
 using System.Xml.Serialization;
@@ -32,6 +33,7 @@ using System.Xml.Serialization;
 namespace ModernClasses.Social
 {
     #region Class PhoneInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
     public class PhoneInfo : PropertyAccessor, IPhoneInfo
     {
@@ -46,6 +48,10 @@ namespace ModernClasses.Social
         }
         [XmlElement(IsNullable = true)]
         public string PhoneNumber { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string ShortNumber { get; set; }
+        [XmlElement(IsNullable = true)]
+        public bool IsEmergencyCall { get; set; }
         #endregion
     }
     #endregion

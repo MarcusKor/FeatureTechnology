@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ using System.Xml.Serialization;
 namespace ModernClasses.Social
 {
     #region Class NameInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
     public class NameInfo : PropertyAccessor, INameInfo
     {
@@ -48,14 +50,8 @@ namespace ModernClasses.Social
         [XmlArrayItem("Nick")]
         [XmlArray("Nicks")]
         public List<string> NickNames { get; set; }
-        [XmlIgnore]
-        private string honorifics { get; set; }
-        [XmlAttribute]
-        public string Honorifics
-        {
-            get => honorifics ?? string.Empty;
-            set => honorifics = value;
-        }
+        [XmlElement]
+        public string Honorifics { get; set; }
         [XmlIgnore]
         public string TokenizedString => $"{FirstName}{TokenDelimiter}{MiddleName}{TokenDelimiter}{LastName}" +
                                         $"{TokenDelimiter}{Honorifics}{TokenDelimiter}" +

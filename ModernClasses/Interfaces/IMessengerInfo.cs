@@ -16,31 +16,33 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: Interface1.cs 
+// Date: 2022, 10, 6, 오후 11:04
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using System;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Interfaces
 {
-    #region Class Extensions
+    #region Interface IMessengerInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    public interface IMessengerInfo : IPropertyAccessor
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        #region Enumerations
+        enum Properties : int
         {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
+            MessengerServer,
+            MessengerAccount
         }
+        #endregion
+        #region Properties
+        string MessengerServer { get; set; }
+        string MessengerAccount { get; set; }
         #endregion
     }
     #endregion

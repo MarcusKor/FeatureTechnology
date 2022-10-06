@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,10 @@ using System.Xml.Serialization;
 #region Program
 namespace ModernClasses.Social
 {
-    public class MailInfo : IMailInfo
+    #region Class MailInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    [Serializable]
+    public class MailInfo : PropertyAccessor, IMailInfo
     {
         #region Properties
         [XmlIgnore]
@@ -49,5 +53,6 @@ namespace ModernClasses.Social
         public string MailAccount { get; set; }
         #endregion
     }
+    #endregion
 }
 #endregion

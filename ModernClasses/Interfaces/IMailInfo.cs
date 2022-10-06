@@ -26,9 +26,13 @@
 #region Imports
 #endregion
 #region Program
+using ModernClasses.Attributes;
+
 namespace ModernClasses.Interfaces
 {
-    public interface IMailInfo
+    #region Interface IMailInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    public interface IMailInfo : IPropertyAccessor
     {
         #region Enumerations
         enum Properties : int
@@ -41,7 +45,7 @@ namespace ModernClasses.Interfaces
         string MailServer { get; set; }
         string MailAccount { get; set; }
         #endregion
-
     }
+    #endregion
 }
 #endregion

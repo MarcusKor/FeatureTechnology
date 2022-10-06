@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,7 @@ using System.Text;
 namespace ModernClasses.Interfaces
 {
     #region Interface INameInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     public interface INameInfo : IPropertyAccessor
     {
         #region Enumerations

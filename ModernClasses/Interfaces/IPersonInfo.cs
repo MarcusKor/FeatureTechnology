@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 
+using ModernClasses.Attributes;
 using ModernClasses.Social;
 using System;
 using System.Collections.Generic;
@@ -31,22 +32,36 @@ using System.Text;
 
 namespace ModernClasses.Interfaces
 {
+    #region Interface IPersonInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     public interface IPersonInfo : IPropertyAccessor
     {
         #region Enumerations
         enum Properties : int
         {
             NameInfo,
+            CompanyInfos,
             AddressInfos,
             PhoneInfos,
-            MailInfos
+            MailInfos,
+            RelationInfos,
+            MessengerInfos,
+            MemorialDayInfos,
+            MedicalInfos
         }
+    
         #endregion
         #region Properties
         NameInfo NameInfo { get; set; }
+        List<CompanyInfo> CompanyInfos { get; set; }
         List<AddressInfo> AddressInfos { get; set; }
         List<PhoneInfo> PhoneInfos { get; set; }
         List<MailInfo> MailInfos { get; set; }
+        List<RelationInfo> RelationInfos { get; set; }
+        List<MessengerInfo> MessengerInfos { get; set; }
+        List<MemorialDayInfo> MemorialDayInfos { get; set; }
+        List<MedicalInfo> MedicalInfos { get; set; }
         #endregion
     }
+    #endregion
 }

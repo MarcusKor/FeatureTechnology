@@ -24,7 +24,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
@@ -33,20 +35,45 @@ using System.Xml.Serialization;
 namespace ModernClasses.Social
 {
     #region Class PersonInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    [Serializable]
     public class PersonInfo : PropertyAccessor, IPersonInfo
     {
         #region Properties
         [XmlElement]
         public NameInfo NameInfo { get; set; }
+        [XmlArrayItem("CompanyInfo")]
+        [XmlArray("CompanyInfos", IsNullable = true)]
+        public List<CompanyInfo> CompanyInfos { get; set; }
         [XmlArrayItem("Address")]
-        [XmlArray("Addresses")]
+        [XmlArray("Addresses", IsNullable = true)]
         public List<AddressInfo> AddressInfos { get; set; }
         [XmlArrayItem("Phone")]
-        [XmlArray("Phones")]
+        [XmlArray("Phones", IsNullable = true)]
         public List<PhoneInfo> PhoneInfos { get; set; }
         [XmlArrayItem("MailAccount")]
-        [XmlArray("MailAccounts")]
+        [XmlArray("MailAccounts", IsNullable = true)]
         public List<MailInfo> MailInfos { get; set; }
+        [XmlArrayItem("MessengerInfo")]
+        [XmlArray("MessengerInfos", IsNullable = true)]
+        public List<MessengerInfo> MessengerInfos { get; set; }
+        [XmlArrayItem("Web")]
+        [XmlArray("WebAccounts", IsNullable = true)]
+        public List<WebInfo> WebInfos { get; set; }
+        [XmlArrayItem("RelationInfo")]
+        [XmlArray("RelationInfos", IsNullable = true)]
+        public List<RelationInfo> RelationInfos { get; set; }
+        [XmlArrayItem("MemorialDayInfo")]
+        [XmlArray("MemorialDayInfos", IsNullable = true)]
+        public List<MemorialDayInfo> MemorialDayInfos { get; set; }
+        [XmlArrayItem("MedicalInfo")]
+        [XmlArray("MedicalInfos", IsNullable = true)]
+        public List<MedicalInfo> MedicalInfos { get; set; }
+        [XmlElement(IsNullable = false)]
+        public DateTime BirthDay { get; set; }
+        [XmlArrayItem("Note")]
+        [XmlArray("Notes", IsNullable = true)]
+        public List<string> Notes { get; set; }
         [XmlIgnore]
         public string FullName => NameInfo.TokenizedString;
         [XmlIgnore]

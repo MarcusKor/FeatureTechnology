@@ -16,31 +16,38 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: IMedicalInfo.cs 
+// Date: 2022, 10, 6, 오후 11:15
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using System;
+using System.Collections.Generic;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Interfaces
 {
-    #region Class Extensions
+    #region Interface IMedicalInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    public interface IMedicalInfo : IPropertyAccessor
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        #region Enumerations
+        enum Properties : int
         {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
+            BloodType,
+            Diseases,
+            LatestVisitedHospital,
+            EmergencyContactHospital
         }
+        #endregion
+        #region Properties
+        string BloodType { get; set; }
+        List<string> Diseases { get; set; }
+        List<string> LatestVisitedHospital { get; set; }
+        List<string> EmergencyContactHospital { get; set; }
         #endregion
     }
     #endregion

@@ -16,30 +16,33 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: Author.cs 
+// Date: 2022, 10, 6, 오후 10:52
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Attributes
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Attributes;
-using System;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Attributes
 {
-    #region Class Extensions
-    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    #region Class AuthorAttribute
+    [System.AttributeUsage(System.AttributeTargets.Interface | System.AttributeTargets.Class | System.AttributeTargets.Struct, AllowMultiple = true)]
+    public class AuthorAttribute : System.Attribute
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        #region Properties
+        public string Name { get; private set; }
+        public string Nick { get; private set; }
+        public double Version { get; private set; }
+        #endregion
+        #region Constructors
+        public AuthorAttribute(string name, string nick = "", double version = 1.0)
         {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
+            Name = name;
+            Nick = nick;
+            Version = version;
         }
         #endregion
     }

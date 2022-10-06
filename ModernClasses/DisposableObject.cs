@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using System;
 using System.Diagnostics;
 #endregion
@@ -31,6 +32,7 @@ using System.Diagnostics;
 namespace ModernClasses
 {
     #region Class DisposableObject
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     public class DisposableObject : IDisposable
     {
         #region Fields

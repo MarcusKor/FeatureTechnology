@@ -24,24 +24,32 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using System.Collections.Generic;
 #endregion
 #region Program
 namespace ModernClasses.Interfaces
 {
-    public interface IPhoneInfo
+    #region Interface IPhoneInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    public interface IPhoneInfo : IPropertyAccessor
     {
         #region Enumerations
         enum Properties : int
         {
             PhoneType,
-            PhoneNumber
+            PhoneNumber,
+            ShortNumber,
+            IsEmergencyCall
         }
         #endregion
         #region Properties
         string PhoneType { get; set; }
         string PhoneNumber { get; set; }
+        string ShortNumber { get; set; }
+        bool IsEmergencyCall { get; set; }
         #endregion
     }
+    #endregion
 }
 #endregion

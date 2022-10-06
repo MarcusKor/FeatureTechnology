@@ -16,31 +16,36 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: MedicalInfo.cs 
+// Date: 2022, 10, 7, 오전 12:14
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Attributes;
-using System;
+using ModernClasses.Interfaces;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Social
 {
-    #region Class Extensions
-    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    #region Class MedicalInfo
+    public class MedicalInfo : PropertyAccessor, IMedicalInfo
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
-        {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
-        }
+        #region Properties
+        [XmlElement(IsNullable = false)]
+        public string BloodType { get; set; }
+        [XmlArrayItem("Disease")]
+        [XmlArray("Diseases", IsNullable = true)]
+        public List<string> Diseases { get; set; }
+        [XmlArrayItem("VisitedHospital")]
+        [XmlArray("LatestVisitedHospital", IsNullable = true)]
+        public List<string> LatestVisitedHospital { get; set; }
+        [XmlArrayItem("ContactHospital")]
+        [XmlArray("EmergencyContactHospital", IsNullable = true)]
+        public List<string> EmergencyContactHospital { get; set; }
         #endregion
     }
     #endregion

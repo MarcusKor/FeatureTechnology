@@ -72,5 +72,78 @@ namespace ModernClasses.Social
         ToUpper
     }
     #endregion
+    #region PrivacyLevel
+    public enum PrivacyLevel : int
+    {
+        HideAll,
+        OpenToPeer,
+        OpenToFriend,
+        OpenToFamily,
+        OpenToDesignatedPersons,
+        OpenAll,
+    }
+    #endregion
+    #region Notification mode
+    public enum NotificationMode : int
+    {
+        BeforeAYear,
+        BeforeAMonth,
+        BeforeAWeek,
+        BeforeADay,
+        BeforeAHour,
+        BeforeTenMinitures,
+        BeforeOneMiniture,
+        BeforeTenSecond,
+        BeforeFiveSecond,
+        BeforeOneSecond,
+        JustInTime,
+        AfterOneSecond,
+        AfterFiveSecond,
+        AfterTenSecond,
+        AfterOneMiniture,
+        AfterTenMinitures,
+        AfterAHour,
+        AfterADay,
+        AfterAWeek,
+        AfterAMonth,
+        AfterAYear
+    }
+    #endregion
+    #region Notification way
+    public enum NotificationWay : int
+    {
+        Buzzer,
+        Lighting,
+        Vibration,
+        Bell,
+        Music,
+        Video,
+        Mail,
+        Memo,
+        Messenger,
+        Call,
+        ShortMessageService,
+        MultimediaMessageService,
+        Push,
+        Fax
+    }
+    #endregion
+    #region Notification repeat mode
+    public enum NotificationRepeatMode : int
+    {
+        EveryOneMiniture,
+        EveryThreeMinitures,
+        EveryFiveMinitures,
+        EveryTenMinitures,
+        EveryHalfHourMinitures,
+        EveryHourMinitures,
+        EveryWorkDays,
+        EveryWeekend,
+        EveryPublicHoliday,
+        EveryMemorialDay,
+        EverySpecificEventDay,
+        EveryDay,
+    }
+    #endregion
 }
 #endregion

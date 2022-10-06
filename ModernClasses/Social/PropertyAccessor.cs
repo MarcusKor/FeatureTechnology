@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
 using System.Collections;
@@ -37,6 +38,7 @@ using System.Xml.Serialization;
 namespace ModernClasses.Social
 {
     #region Class PropertyAccessor
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
     public abstract class PropertyAccessor : DisposableObject, IPropertyAccessor
     {

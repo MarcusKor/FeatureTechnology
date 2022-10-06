@@ -16,31 +16,46 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Extensions.cs 
-// Date: 2022, 10, 2, 오후 11:16
+// File: CompanyInfo.cs 
+// Date: 2022, 10, 6, 오후 10:45
 // Project: ModernClasses
-// Namespace: ModernClasses.Helpers
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
+using ModernClasses.Interfaces;
 using System;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Helpers
+namespace ModernClasses.Social
 {
-    #region Class Extensions
+    #region Class CompanyInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public static class Extensions
+    [Serializable]
+    public class CompanyInfo : PropertyAccessor, ICompanyInfo
     {
-        #region Public static methods
-        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        #region Properties
+        [XmlIgnore]
+        private string companyName;
+        [XmlAttribute]
+        public string CompanyName
         {
-            T[] result = new T[length];
-            Array.Copy(array, offset, result, 0, length);
-            return result;
+            get => companyName??string.Empty;
+            set => companyName = value;
         }
+        [XmlElement(IsNullable = true)]
+        public WebInfo WebInfo { get; set; }
+        [XmlElement(IsNullable = true)]
+        public AddressInfo AddressInfo { get; set; }
+        [XmlElement(IsNullable = true)]
+        public MailInfo MailInfo { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Department { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Position { get; set; }
         #endregion
     }
     #endregion

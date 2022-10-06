@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
 using System.Linq;
@@ -33,6 +34,7 @@ using System.Xml.Serialization;
 namespace ModernClasses.Social
 {
     #region Class AddressInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
     public class AddressInfo : PropertyAccessor, IAddressInfo
     {
