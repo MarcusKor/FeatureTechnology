@@ -47,6 +47,17 @@ namespace ModernClasses.Social
         [XmlArray("EmergencyContactHospital", IsNullable = true)]
         public List<string> EmergencyContactHospital { get; set; }
         #endregion
+        #region Constructors
+        public MedicalInfo() { }
+        public MedicalInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IMedicalInfo.Properties>(arg, delimiter);
+        }
+        public MedicalInfo(params string[] args)
+        {
+            AssignValues<IMedicalInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

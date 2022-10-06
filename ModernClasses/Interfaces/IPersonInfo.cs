@@ -23,13 +23,12 @@
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
-
+#region Imports
 using ModernClasses.Attributes;
 using ModernClasses.Social;
-using System;
 using System.Collections.Generic;
-using System.Text;
-
+#endregion
+#region Program
 namespace ModernClasses.Interfaces
 {
     #region Interface IPersonInfo
@@ -49,7 +48,6 @@ namespace ModernClasses.Interfaces
             MemorialDayInfos,
             MedicalInfos
         }
-    
         #endregion
         #region Properties
         NameInfo NameInfo { get; set; }
@@ -65,3 +63,4 @@ namespace ModernClasses.Interfaces
     }
     #endregion
 }
+#endregion

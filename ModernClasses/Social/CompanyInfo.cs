@@ -57,6 +57,17 @@ namespace ModernClasses.Social
         [XmlElement(IsNullable = true)]
         public string Position { get; set; }
         #endregion
+        #region Constructors
+        public CompanyInfo() { }
+        public CompanyInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<ICompanyInfo.Properties>(arg, delimiter);
+        }
+        public CompanyInfo(params string[] args)
+        {
+            AssignValues<ICompanyInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

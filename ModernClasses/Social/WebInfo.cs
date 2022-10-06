@@ -49,6 +49,17 @@ namespace ModernClasses.Social
         [XmlElement(IsNullable = true)]
         public string WebAccount { get; set; }
         #endregion
+        #region Constructors
+        public WebInfo() { }
+        public WebInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IWebInfo.Properties>(arg, delimiter);
+        }
+        public WebInfo(params string[] args)
+        {
+            AssignValues<IWebInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

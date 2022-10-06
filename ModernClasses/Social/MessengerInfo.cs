@@ -49,6 +49,17 @@ namespace ModernClasses.Social
         [XmlElement]
         public string MessengerAccount { get; set; }
         #endregion
+        #region Constructors
+        public MessengerInfo() { }
+        public MessengerInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IMessengerInfo.Properties>(arg, delimiter);
+        }
+        public MessengerInfo(params string[] args)
+        {
+            AssignValues<IMessengerInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

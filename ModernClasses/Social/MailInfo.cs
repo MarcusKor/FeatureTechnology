@@ -52,6 +52,17 @@ namespace ModernClasses.Social
         [XmlElement(IsNullable = true)]
         public string MailAccount { get; set; }
         #endregion
+        #region Constructors
+        public MailInfo() { }
+        public MailInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IMailInfo.Properties>(arg, delimiter);
+        }
+        public MailInfo(params string[] args)
+        {
+            AssignValues<IMailInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

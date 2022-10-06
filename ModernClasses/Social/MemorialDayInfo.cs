@@ -55,6 +55,17 @@ namespace ModernClasses.Social
         [XmlElement(IsNullable = false)]
         public PrivacyLevel PrivacyLevel { get; set; }
         #endregion
+        #region Constructors
+        public MemorialDayInfo() { }
+        public MemorialDayInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IMemorialDayInfo.Properties>(arg, delimiter);
+        }
+        public MemorialDayInfo(params string[] args)
+        {
+            AssignValues<IMemorialDayInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

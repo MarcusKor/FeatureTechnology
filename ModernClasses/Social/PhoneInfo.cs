@@ -53,6 +53,17 @@ namespace ModernClasses.Social
         [XmlElement(IsNullable = true)]
         public bool IsEmergencyCall { get; set; }
         #endregion
+        #region Constructors
+        public PhoneInfo() { }
+        public PhoneInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IPhoneInfo.Properties>(arg, delimiter);
+        }
+        public PhoneInfo(params string[] args)
+        {
+            AssignValues<IPhoneInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

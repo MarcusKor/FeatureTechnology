@@ -49,6 +49,17 @@ namespace ModernClasses.Social
         [XmlIgnore]
         public bool Status { get; set; }
         #endregion
+        #region Constructors
+        public NotificationInfo() { }
+        public NotificationInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<INotificationInfo.Properties>(arg, delimiter);
+        }
+        public NotificationInfo(params string[] args)
+        {
+            AssignValues<INotificationInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }

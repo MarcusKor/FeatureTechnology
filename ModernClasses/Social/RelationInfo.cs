@@ -55,6 +55,17 @@ namespace ModernClasses.Social
         [XmlArray("Plans")]
         public List<string> Plans { get; set; }
         #endregion
+        #region Constructors
+        public RelationInfo() { }
+        public RelationInfo(string arg, char delimiter = '/')
+        {
+            AssignValues<IRelationInfo.Properties>(arg, delimiter);
+        }
+        public RelationInfo(params string[] args)
+        {
+            AssignValues<IRelationInfo.Properties>(args);
+        }
+        #endregion
     }
     #endregion
 }
