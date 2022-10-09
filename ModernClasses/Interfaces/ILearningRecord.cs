@@ -16,55 +16,35 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: MemorialDayInfo.cs 
-// Date: 2022, 10, 7, 오전 12:09
+// File: ILearningRecord.cs 
+// Date: 2022, 10, 9, 오후 9:52
 // Project: ModernClasses
-// Namespace: ModernClasses.Social
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using ModernClasses.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+using System.Text;
 #endregion
 #region Program
-namespace ModernClasses.Social
+namespace ModernClasses.Interfaces
 {
-    #region Class MemorialDayInfo
+    #region Interface ILearningRecord
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    [Serializable]
-    public class MemorialDayInfo : PropertyAccessor, IMemorialDayInfo
+    public interface ILearningRecord
     {
         #region Properties
-        [XmlElement(IsNullable = false)]
-        public DateTime Date { get; set; }
-        [XmlElement(IsNullable = false)]
-        public DateTime BeginTime { get; set; }
-        [XmlElement]
-        public DateTime EndTime { get; set; }
-        [XmlArrayItem("Place")]
-        [XmlArray("Places")]
-        public List<string> Places { get; set; }
-        [XmlElement(IsNullable = true)]
-        public NotificationInfo NotificationInfo { get; set; }
-        [XmlElement(IsNullable = true)]
-        public string RelatedPerson { get; set; }
-        [XmlElement(IsNullable = false)]
-        public PrivacyLevel PrivacyLevel { get; set; }
-        #endregion
-        #region Constructors
-        public MemorialDayInfo() { }
-        public MemorialDayInfo(string arg, char delimiter = '/')
-        {
-            AssignValues(this, arg, delimiter);
-        }
-        public MemorialDayInfo(params string[] args)
-        {
-            AssignValues(this, args);
-        }
+        IStudyClass StudyClass { get; set; }
+        IStudentGrade HighestGrade { get; set; }
+        IStudentGrade LowestGrade { get; set; }
+        IStudentGrade FinalGrade { get; set; }
+        List<KeyValuePair<DateTime, ITestScore>> TestResults { get; set; }
+        uint NumberOfRetakes { get; set; }
+        uint NumberOfTest { get; set; }
+        uint NumberOfPass { get; set; }
         #endregion
     }
     #endregion

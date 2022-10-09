@@ -31,15 +31,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IMessengerInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IMessengerInfo : IPropertyAccessor
+    public interface IMessengerInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            MessengerServer,
-            MessengerAccount
-        }
-        #endregion
         #region Properties
         string MessengerServer { get; set; }
         string MessengerAccount { get; set; }

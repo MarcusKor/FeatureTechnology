@@ -34,17 +34,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IRelationInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IRelationInfo : IPropertyAccessor
+    public interface IRelationInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            RelationType,
-            FirstImpressions,
-            FirstMeetingPlace,
-            Plans
-        }
-        #endregion
         #region Properties
         string RelationType { get; set; }
         string FirstImpressions { get; set; }

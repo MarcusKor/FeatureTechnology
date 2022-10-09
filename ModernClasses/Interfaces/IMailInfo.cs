@@ -32,15 +32,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IMailInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IMailInfo : IPropertyAccessor
+    public interface IMailInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            MailServer,
-            MailAccount
-        }
-        #endregion
         #region Properties
         string MailServer { get; set; }
         string MailAccount { get; set; }

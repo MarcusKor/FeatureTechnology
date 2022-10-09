@@ -32,19 +32,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface ICompanyInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo : IPropertyAccessor
+    public interface ICompanyInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            CompanyName,
-            WebInfo,
-            AddressInfo,
-            MailInfo,
-            Department,
-            Position
-        }
-        #endregion
         #region Properties
         string CompanyName { get; set; }
         WebInfo WebInfo { get; set; }

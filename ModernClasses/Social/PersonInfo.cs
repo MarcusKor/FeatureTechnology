@@ -80,16 +80,18 @@ namespace ModernClasses.Social
         public string Nick => NameInfo.NickNames.FirstOrDefault();
         [XmlIgnore]
         public string? Address1 => AddressInfos.First()?.TokenizedString;
+        [XmlIgnore]
+        public int Age => DateTime.Now.Year - BirthDay.Year;
         #endregion
         #region Constructors
         public PersonInfo() { }
         public PersonInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IPersonInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public PersonInfo(params string[] args)
         {
-            AssignValues<IPersonInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

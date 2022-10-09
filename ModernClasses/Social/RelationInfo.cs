@@ -59,11 +59,11 @@ namespace ModernClasses.Social
         public RelationInfo() { }
         public RelationInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IRelationInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public RelationInfo(params string[] args)
         {
-            AssignValues<IRelationInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

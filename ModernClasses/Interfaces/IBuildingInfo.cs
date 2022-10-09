@@ -16,8 +16,8 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: INotificationInfo.cs 
-// Date: 2022, 10, 6, 오후 11:26
+// File: IBuildingInfo.cs 
+// Date: 2022, 10, 9, 오후 9:00
 // Project: ModernClasses
 // Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
@@ -30,16 +30,14 @@ using ModernClasses.Social;
 #region Program
 namespace ModernClasses.Interfaces
 {
-    #region Interface INotificationInfo
+    #region Interface IBuildingInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    internal interface INotificationInfo
+    public interface IBuildingInfo : IAddressInfo
     {
         #region Properties
-        NotificationMode NotificationMode { get; set; }
-        NotificationWay NotificationWay { get; set; }
-        NotificationRepeatMode RepeatMode { get; set; }
-        bool Usage { get; set; }
-        bool Status { get; set; }
+        string Name { get; set; }
+        string Classification { get; set; }
+        PersonInfo Owner { get; set; }
         #endregion
     }
     #endregion

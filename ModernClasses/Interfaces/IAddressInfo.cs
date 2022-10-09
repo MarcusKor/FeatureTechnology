@@ -32,21 +32,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IAddressInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IAddressInfo : IPropertyAccessor
+    public interface IAddressInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            ResidenceType,
-            SiteUrl,
-            GeographicLocation,
-            Street1,
-            Street2,
-            City,
-            State,
-            Country
-        }
-        #endregion
         #region Properties
         string ResidenceType { get; set; }
         string SiteUrl { get; set; }

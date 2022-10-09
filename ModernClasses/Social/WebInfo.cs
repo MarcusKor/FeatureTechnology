@@ -53,11 +53,11 @@ namespace ModernClasses.Social
         public WebInfo() { }
         public WebInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IWebInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public WebInfo(params string[] args)
         {
-            AssignValues<IWebInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

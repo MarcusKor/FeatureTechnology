@@ -16,55 +16,37 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: MemorialDayInfo.cs 
-// Date: 2022, 10, 7, 오전 12:09
+// File: ICourse.cs 
+// Date: 2022, 10, 9, 오후 9:18
 // Project: ModernClasses
-// Namespace: ModernClasses.Social
+// Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using ModernClasses.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Social
+namespace ModernClasses.Interfaces
 {
-    #region Class MemorialDayInfo
+    #region Interface IClassCourse
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    [Serializable]
-    public class MemorialDayInfo : PropertyAccessor, IMemorialDayInfo
+    public interface IClassCourse
     {
         #region Properties
-        [XmlElement(IsNullable = false)]
-        public DateTime Date { get; set; }
-        [XmlElement(IsNullable = false)]
-        public DateTime BeginTime { get; set; }
-        [XmlElement]
-        public DateTime EndTime { get; set; }
-        [XmlArrayItem("Place")]
-        [XmlArray("Places")]
-        public List<string> Places { get; set; }
-        [XmlElement(IsNullable = true)]
-        public NotificationInfo NotificationInfo { get; set; }
-        [XmlElement(IsNullable = true)]
-        public string RelatedPerson { get; set; }
-        [XmlElement(IsNullable = false)]
-        public PrivacyLevel PrivacyLevel { get; set; }
-        #endregion
-        #region Constructors
-        public MemorialDayInfo() { }
-        public MemorialDayInfo(string arg, char delimiter = '/')
-        {
-            AssignValues(this, arg, delimiter);
-        }
-        public MemorialDayInfo(params string[] args)
-        {
-            AssignValues(this, args);
-        }
+        string Name { get; set; }
+        TimeSpan StudyTime { get; set; }
+        int TotalNumberOfRegularClassParticipants { get; set; }
+        Dictionary<IStudyClass, List<ITeacher>> Subjects { get; set; }
+        List<KeyValuePair<DateTime, double>> AttendanceRate { get; set; }
+        List<KeyValuePair<DateTime, double>> PassRate { get; set; }
+        Dictionary<DateTime, KeyValuePair<ITestScore, List<IStudent>>> TestScores { get; set; }
+        List<KeyValuePair<ITestScore, List<IStudent>>> HighestTestScoreStudents { get; set; }
+        List<KeyValuePair<ITestScore, List<IStudent>>> LowestTestScoreStudents { get; set; }
+        List<KeyValuePair<ITestScore, List<IStudent>>> TestPassedStudents { get; set; }
+        List<KeyValuePair<ITestScore, List<IStudent>>> TestFailedStudents { get; set; }
         #endregion
     }
     #endregion

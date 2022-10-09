@@ -32,17 +32,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IPhoneInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IPhoneInfo : IPropertyAccessor
+    public interface IPhoneInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            PhoneType,
-            PhoneNumber,
-            ShortNumber,
-            IsEmergencyCall
-        }
-        #endregion
         #region Properties
         string PhoneType { get; set; }
         string PhoneNumber { get; set; }

@@ -61,11 +61,11 @@ namespace ModernClasses.Social
         public NameInfo() { }
         public NameInfo(string arg, char delimiter = '/')
         {
-            AssignValues<INameInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public NameInfo(params string[] args)
         {
-            AssignValues<INameInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

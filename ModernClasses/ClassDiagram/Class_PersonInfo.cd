@@ -1,168 +1,158 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ModernClasses.Social.PersonInfo" Collapsed="true">
-    <Position X="0.5" Y="3" Width="1.5" />
+  <Interface Name="ModernClasses.Interfaces.IAddressInfo" Collapsed="true">
+    <Position X="1.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAwAAAAAAAAAIEAECAEAAAAABAIAACAAAAACABMAAA=</HashCode>
-      <FileName>Social\PersonInfo.cs</FileName>
+      <HashCode>AAAAAAAAABAAAgAIAAAACAAAAA4AAAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Interfaces\IAddressInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.AddressInfo" Collapsed="true">
-    <Position X="4" Y="3" Width="1.5" />
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.ICompanyInfo" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAABAAAgAIAAAACAAAAA4AAgAAAAAQBAAAAAA=</HashCode>
-      <FileName>Social\AddressInfo.cs</FileName>
+      <HashCode>AAAQQAAAAAAAAAAgACAAAAAAEABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICompanyInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.NameInfo" Collapsed="true">
-    <Position X="2.25" Y="3" Width="1.5" />
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IMailInfo" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAABAQCAAAAAAAAAEAAAAAAAAAAAg=</HashCode>
-      <FileName>Social\NameInfo.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgAAAAAA=</HashCode>
+      <FileName>Interfaces\IMailInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.DisposableObject" Collapsed="true">
-    <Position X="5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
-      <FileName>DisposableObject.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.PropertyAccessor" Collapsed="true">
-    <Position X="5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAABAAAgIAAAAgAAAACAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Social\PropertyAccessor.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.CompanyInfo">
-    <Position X="2.25" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="2.625" />
-        <Point X="3.873" Y="2.625" />
-        <Point X="3.873" Y="6.625" />
-        <Point X="3.75" Y="6.625" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>AAAQQAAAAAAAAAAgACAAAAAAEABAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Social\CompanyInfo.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.MailInfo">
-    <Position X="7.75" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAgAAAAAA=</HashCode>
-      <FileName>Social\MailInfo.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.MedicalInfo">
-    <Position X="0.5" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="2.625" />
-        <Point X="2.123" Y="2.625" />
-        <Point X="2.123" Y="6.5" />
-        <Point X="2" Y="6.5" />
-      </Path>
-    </InheritanceLine>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IMedicalInfo" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAACAAAAAAAAAAACAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Social\MedicalInfo.cs</FileName>
+      <FileName>Interfaces\IMedicalInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.MemorialDayInfo">
-    <Position X="6" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="5.601" />
-        <Point X="6.875" Y="5.601" />
-        <Point X="6.875" Y="6.25" />
-      </Path>
-    </InheritanceLine>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IMemorialDayInfo" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAQAAAAAAAAAAAAAAAQAAgAAABAEAAAAIAAAA=</HashCode>
-      <FileName>Social\MemorialDayInfo.cs</FileName>
+      <FileName>Interfaces\IMemorialDayInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.MessengerInfo">
-    <Position X="9.5" Y="3" Width="1.5" />
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IMessengerInfo" Collapsed="true">
+    <Position X="9.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAQAAA=</HashCode>
-      <FileName>Social\MessengerInfo.cs</FileName>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Interfaces\IMessengerInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.NotificationInfo">
-    <Position X="4" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="5.604" />
-        <Point X="4.812" Y="5.604" />
-        <Point X="4.812" Y="6.25" />
-      </Path>
-    </InheritanceLine>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.INameInfo" Collapsed="true">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAABAQCAAAAAAAAAEAAAAAAAAAAAg=</HashCode>
+      <FileName>Interfaces\INameInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.INotificationInfo" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAACAAQAAAAAAAAEAAABAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Social\NotificationInfo.cs</FileName>
+      <FileName>Interfaces\INotificationInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.PhoneInfo">
-    <Position X="9.5" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="2.625" />
-        <Point X="11.375" Y="2.625" />
-        <Point X="11.375" Y="6.5" />
-        <Point X="11" Y="6.5" />
-      </Path>
-    </InheritanceLine>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IPersonInfo" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAARAAACAAAAAQAAAAAAAAAAAA=</HashCode>
-      <FileName>Social\PhoneInfo.cs</FileName>
+      <HashCode>ABAQAAAAAAAAAAEAECAAAAAAAAAAAACAAAAAAABMAAA=</HashCode>
+      <FileName>Interfaces\IPersonInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.RelationInfo">
-    <Position X="6" Y="3" Width="1.5" />
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IPhoneInfo" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAIQAAEAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Social\RelationInfo.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAARAAACAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPhoneInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="ModernClasses.Social.WebInfo">
-    <Position X="7.75" Y="6.25" Width="1.5" />
-    <InheritanceLine Type="ModernClasses.Social.PropertyAccessor" FixedToPoint="true">
-      <Path>
-        <Point X="5.75" Y="2.191" />
-        <Point X="5.75" Y="2.625" />
-        <Point X="9.373" Y="2.625" />
-        <Point X="9.373" Y="6.5" />
-        <Point X="9.25" Y="6.5" />
-      </Path>
-    </InheritanceLine>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IRelationInfo" Collapsed="true">
+    <Position X="11.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAABAAAAAAAA=</HashCode>
-      <FileName>Social\WebInfo.cs</FileName>
+      <HashCode>AIAAAAAAAAAIAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRelationInfo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IWebInfo" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IWebInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IBuildingInfo" Collapsed="true">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBuildingInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IStudent" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCAAAAAAAAAAACAAAAAAUAAAAAAAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>Interfaces\IStudent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IStudyClass" Collapsed="true">
+    <Position X="8" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAECAEAAAAAAAACQSCAAAAAABARAAAAggAAAA=</HashCode>
+      <FileName>Interfaces\IStudyClass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IStudentGrade" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAQAAIAIAAAEAAAAAAAAQAAABAAAAAA=</HashCode>
+      <FileName>Interfaces\IStudentGrade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.ITestScore" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAIAAAAAAAAAAAQAAAAgAAAAAAAgAAAAACA=</HashCode>
+      <FileName>Interfaces\ITestScore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IClassCourse" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQECSAAAAAAAAAAAACQSAAAABAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IClassCourse.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IInstructor" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>Interfaces\IInstructor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.ITeacher" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>Interfaces\ITeacher.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.IPayInfo" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAABAEgAAgAAAAAAASAAAAAAAAAACAAAAAIAAA=</HashCode>
+      <FileName>Interfaces\IPayInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModernClasses.Interfaces.ILearningRecord" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAAAAAAAAQAAAQAAAgARAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Interfaces\ILearningRecord.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="맑은 고딕" Size="9" />
 </ClassDiagram>

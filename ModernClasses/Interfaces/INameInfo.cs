@@ -34,18 +34,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface INameInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface INameInfo : IPropertyAccessor
+    public interface INameInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            FirstName,
-            MiddleName,
-            LastName,
-            Nick,
-            Honorifics
-        }
-        #endregion
         #region Properties
         string FirstName { get; set; }
         string MiddleName { get; set; }

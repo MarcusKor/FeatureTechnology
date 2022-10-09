@@ -24,6 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,15 +33,9 @@ using System.Text;
 namespace ModernClasses.Interfaces
 {
     #region Interface IWebInfo
-    public interface IWebInfo : IPropertyAccessor
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    public interface IWebInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            WebServer,
-            WebAccount
-        }
-        #endregion
         #region Properties
         string WebServer { get; set; }
         string WebAccount { get; set; }

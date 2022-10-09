@@ -56,11 +56,11 @@ namespace ModernClasses.Social
         public MailInfo() { }
         public MailInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IMailInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public MailInfo(params string[] args)
         {
-            AssignValues<IMailInfo.Properties>(args);
+            AssignValues(this,args);
         }
         #endregion
     }

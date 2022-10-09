@@ -34,20 +34,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IMemorialDayInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IMemorialDayInfo : IPropertyAccessor
+    public interface IMemorialDayInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            Date,
-            BeginTime,
-            EndTime,
-            Places,
-            NotificationInfo,
-            RelatedPerson,
-            PrivacyLevel
-        }
-        #endregion
         #region Properties
         DateTime Date { get; set; }
         DateTime BeginTime { get; set; }

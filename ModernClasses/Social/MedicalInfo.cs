@@ -51,11 +51,11 @@ namespace ModernClasses.Social
         public MedicalInfo() { }
         public MedicalInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IMedicalInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public MedicalInfo(params string[] args)
         {
-            AssignValues<IMedicalInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

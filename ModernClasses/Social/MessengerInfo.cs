@@ -53,11 +53,11 @@ namespace ModernClasses.Social
         public MessengerInfo() { }
         public MessengerInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IMessengerInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public MessengerInfo(params string[] args)
         {
-            AssignValues<IMessengerInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

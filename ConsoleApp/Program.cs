@@ -2,12 +2,14 @@
 using ModernClasses.Interfaces;
 using ModernClasses.Social;
 
-Console.WriteLine("Hello, World!");
-var addressInfo = new AddressInfo();
-var properties = addressInfo.GetAllPropertyNames<IAddressInfo.Properties>();
 string address = string.Empty;
-foreach (var property in properties)
+var addressInfo = new AddressInfo();
+var properties = PropertyAccessor.GetAllPropertyNames(addressInfo);
+if (properties != null)
 {
-    address += $"{property}{addressInfo.TokenDelimiter}";
+    foreach (var property in properties)
+    {
+        address += $"{property}{addressInfo.TokenDelimiter}";
+    }
+    PropertyAccessor.AssignValues(addressInfo, address = address.Remove(address.Length - 1));
 }
-addressInfo.AssignValues<IAddressInfo.Properties>(address = address.Remove(address.Length - 1));

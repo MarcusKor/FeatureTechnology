@@ -31,6 +31,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Reflection;
 using System.Xml.Serialization;
 #endregion
@@ -40,7 +41,7 @@ namespace ModernClasses.Social
     #region Class PropertyAccessor
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
-    public abstract class PropertyAccessor : DisposableObject, IPropertyAccessor
+    public abstract class PropertyAccessor : DisposableObject 
     {
         #region Properties
         [XmlAttribute]
@@ -49,75 +50,73 @@ namespace ModernClasses.Social
         #region Protected methods
         #endregion
         #region Public methods
-        public virtual T GetProperty<T>(string element, CaseConversionType caseConversion = CaseConversionType.None)
+        public static PropertyInfo? GetProperty(string property, object src, CaseConversionType caseConversionType = 0)
         {
-            return (T)Enum.ToObject(typeof(T), GetAllPropertyNames<T>(caseConversion).Where(x => x == element).Select(x => x.IndexOf(x)));
+            return GetProperties(src)?.Where(x => x.Name == property).FirstOrDefault();
         }
-        public virtual string[] GetAllPropertyNames<T>(CaseConversionType caseConversion = CaseConversionType.None)
+        public static string[]? GetAllPropertyNames(object src, CaseConversionType caseConversion = CaseConversionType.None)
         {
-            ArrayList arrList = new ArrayList();
-            return caseConversion switch
-            {   
-                CaseConversionType.ToLower => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString().ToLower()).ToArray(),
-                CaseConversionType.ToUpper => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString().ToUpper()).ToArray(),
-                _ => Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.ToString()).ToArray(),
-            };
-        }
-        public virtual bool AssignValues<T>(string args, char delimiter = '/')
-        {
-            int result = 0;
-            if (!string.IsNullOrEmpty(args))
-            {   // Assign tokenized values
-                var properties = Enum.GetValues(typeof(T));
-                var tokens = args.Split(TokenDelimiter = delimiter);
-                for (int i = 0; i < tokens.Length; i++)
+            var type = src.GetType();
+            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            if (properties != null)
+            {
+                return caseConversion switch
                 {
-                    var property = properties.GetValue(i);
-                    if (property != null)
-                    {
-                        SetValue(this, nameof(property), tokens[i]);
-                    }
-                    else
-                    {
-                        Trace.WriteLine($"Property={property} is not available!");
-                    }
-                }
+                    CaseConversionType.ToLower => properties.Select(x => x.Name.ToLower()).ToArray(),
+                    CaseConversionType.ToUpper => properties.Select(x => x.Name.ToUpper()).ToArray(),
+                    _ => properties.Select(x => x.Name).ToArray(),
+                };
             }
-            return result > 0;
+            return null;
         }
-        public virtual bool AssignValues<T>(params string[] args)
+        public static PropertyInfo[]? GetProperties(object src)
+        {
+            var type = src.GetType();
+            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            return properties != null ? properties.ToArray() : null;
+        }
+        public static bool AssignValues(object src, string args, char delimiter = '/')
+        {   // Assign tokenized values
+            return string.IsNullOrEmpty(args) ? false : AssignValues(src, args.Split(delimiter));
+        }
+        public static bool AssignValues(object src, params string[] args)
         {
             bool result = false;
             if (args is not null)
             {   // Assign KeyValuePair
-                if (args.Length % 2 == 0 && args.Any(x => GetAllPropertyNames<T>().Contains(x)))
+                if (args.First().Contains("="))
                 {
-                    foreach (string value in args)
+                    List<string> keys = new ();
+                    List<string> values = new ();
+                    foreach (var arg in args)
                     {
-                        var property = GetProperty<T>(value.ToLower());
-                        if (property != null)
+                        if (arg.Contains("="))
                         {
-                            SetValue(this, nameof(property), value);
+                            var tokens = arg.Split('=');
+                            keys.Add(tokens.First());
+                            values.Add(tokens.Last());
                         }
-                        else
+                    }
+                    if (keys.Any(x => GetAllPropertyNames(src).Contains(x)))
+                    {
+                        for (int i = 0; i < keys.Count; i++)
                         {
-                            Trace.WriteLine($"Property={property} is not available!");
+                            var property = GetProperty(keys[i], src);
+                            if (property != null)
+                            {
+                                SetValue(src, property.Name, values[i]);
+                            }
                         }
                     }
                 }
-                else if (args.Length == Enum.GetValues(typeof(T)).Length)
+                else if (args.Length == GetAllPropertyNames(src)?.Length)
                 {   // Assign sequencial values
-                    var properties = Enum.GetValues(typeof(T));
-                    for (int i = 0; i < properties.Length; i++)
+                    var properties = GetProperties(src);
+                    if (properties != null)
                     {
-                        var property = properties.GetValue(i);
-                        if (property != null)
+                        for (int i = 0; i < properties?.Length; i++)
                         {
-                            SetValue(this, nameof(property), args[i]);
-                        }
-                        else
-                        {
-                            Trace.WriteLine($"Property={property} is not available!");
+                            SetValue(src, properties[i].Name, args[i]);
                         }
                     }
                 }

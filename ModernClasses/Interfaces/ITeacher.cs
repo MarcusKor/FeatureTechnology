@@ -16,32 +16,28 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: IElementHelper.cs 
-// Date: 2022, 10, 2, 오후 9:00
+// File: ITeacher.cs 
+// Date: 2022, 10, 9, 오후 9:33
 // Project: ModernClasses
 // Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Social;
-using System.Linq;
+using ModernClasses.Attributes;
 using System;
 #endregion
 #region Program
 namespace ModernClasses.Interfaces
 {
-    #region Interface IPropertyAccessor
-    public interface IPropertyAccessor
+    #region Interface ITeacher
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    public interface ITeacher : IInstructor
     {
         #region Properties
-        char TokenDelimiter { get; }
-        #endregion
-        #region Public methods
-        T GetProperty<T>(string elementName, CaseConversionType caseConversionType = 0);
-        string[] GetAllPropertyNames<T>(CaseConversionType caseConversionType = 0);
-        bool AssignValues<T>(string args, char delimiter = '/');
-        bool AssignValues<T>(params string[] args);
+        string School { get; set; }
+        TimeSpan ElapsedTimeFromTeaching { get; set; }
+        TimeSpan CounselorExperience { get; set; }
         #endregion
     }
     #endregion

@@ -81,11 +81,11 @@ namespace ModernClasses.Social
         public AddressInfo() { }
         public AddressInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IAddressInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public AddressInfo(params string[] args)
         {
-            AssignValues<IAddressInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

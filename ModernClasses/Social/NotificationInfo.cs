@@ -53,11 +53,11 @@ namespace ModernClasses.Social
         public NotificationInfo() { }
         public NotificationInfo(string arg, char delimiter = '/')
         {
-            AssignValues<INotificationInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public NotificationInfo(params string[] args)
         {
-            AssignValues<INotificationInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

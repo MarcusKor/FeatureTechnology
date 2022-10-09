@@ -33,22 +33,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IPersonInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IPersonInfo : IPropertyAccessor
+    public interface IPersonInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            NameInfo,
-            CompanyInfos,
-            AddressInfos,
-            PhoneInfos,
-            MailInfos,
-            RelationInfos,
-            MessengerInfos,
-            MemorialDayInfos,
-            MedicalInfos
-        }
-        #endregion
         #region Properties
         NameInfo NameInfo { get; set; }
         List<CompanyInfo> CompanyInfos { get; set; }

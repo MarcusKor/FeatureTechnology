@@ -57,11 +57,11 @@ namespace ModernClasses.Social
         public PhoneInfo() { }
         public PhoneInfo(string arg, char delimiter = '/')
         {
-            AssignValues<IPhoneInfo.Properties>(arg, delimiter);
+            AssignValues(this, arg, delimiter);
         }
         public PhoneInfo(params string[] args)
         {
-            AssignValues<IPhoneInfo.Properties>(args);
+            AssignValues(this, args);
         }
         #endregion
     }

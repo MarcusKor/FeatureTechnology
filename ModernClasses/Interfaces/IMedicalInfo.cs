@@ -32,17 +32,8 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IMedicalInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IMedicalInfo : IPropertyAccessor
+    public interface IMedicalInfo
     {
-        #region Enumerations
-        enum Properties : int
-        {
-            BloodType,
-            Diseases,
-            LatestVisitedHospital,
-            EmergencyContactHospital
-        }
-        #endregion
         #region Properties
         string BloodType { get; set; }
         List<string> Diseases { get; set; }

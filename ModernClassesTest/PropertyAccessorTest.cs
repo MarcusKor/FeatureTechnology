@@ -9,15 +9,18 @@ namespace ModernClassesTest
         [TestMethod]
         public void TestAssignValues()
         {
-            var addressInfo = new AddressInfo();
-            var properties = addressInfo.GetAllPropertyNames<IAddressInfo.Properties>();
             string address = string.Empty;
-            foreach (var property in properties)
+            var addressInfo = new AddressInfo();
+            var propertyInfos = PropertyAccessor.GetProperties(addressInfo);
+            if (propertyInfos != null)
             {
-                address += $"{property}{addressInfo.TokenDelimiter}";
+                foreach (var property in propertyInfos)
+                {
+                    address += $"{property.Name}{addressInfo.TokenDelimiter}";
+                }
+                PropertyAccessor.AssignValues(addressInfo, address = address.Remove(address.Length - 1));
+                Assert.AreEqual("ResidenceType/SiteUrl/GeographicLocation/Street1/Street2/City/State/Country", address);
             }
-            addressInfo.AssignValues<IAddressInfo.Properties>(address = address.Remove(address.Length - 1));
-            Assert.AreEqual("ResidenceType/SiteUrl/GeographicLocation/Street1/Street2/City/State/Country", address);
         }
     }
 }
