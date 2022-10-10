@@ -221,7 +221,7 @@ namespace ModernClasses.Social
     }
     #endregion
     #region Student grade
-    public enum StudentGrade : int
+    public enum StudentGradeType : int
     {
         Unknown = -1,
         Kindergarten,

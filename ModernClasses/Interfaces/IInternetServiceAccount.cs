@@ -16,34 +16,25 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: ICompanyInfo.cs 
-// Date: 2022, 10, 6, 오후 10:40
+// File: IInternetServiceAccount.cs 
+// Date: 2022, 10, 10, 오후 10:48
 // Project: ModernClasses
 // Namespace: ModernClasses.Interfaces
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Attributes;
-using ModernClasses.Social;
-using System.Collections.Generic;
 #endregion
 #region Program
 namespace ModernClasses.Interfaces
 {
-    #region Interface ICompanyInfo
-    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo
+    public interface IInternetServiceAccount
     {
         #region Properties
-        string Name { get; set; }
-        WebInfo WebInfo { get; set; }
-        List<BuildingInfo> Buildings { get; set; }
-        MailInfo MailInfo { get; set; }
-        string Department { get; set; }
-        string Position { get; set; }
+        string UrlString { get; set; }
+        string Server { get; set; }
+        string Account { get; set; }
         #endregion
     }
-    #endregion
 }
 #endregion

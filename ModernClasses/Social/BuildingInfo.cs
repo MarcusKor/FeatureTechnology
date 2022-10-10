@@ -24,18 +24,38 @@
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
+using System;
+using System.Xml.Serialization;
 #endregion
 #region Program
 namespace ModernClasses.Social
 {
     #region Class BuildingInfo
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    [Serializable]
     public class BuildingInfo : AddressInfo, IBuildingInfo
     {
         #region Properties
+
+        [XmlAttribute]
         public string Name { get; set; }
+        [XmlElement(IsNullable = true)]
         public string Classification { get; set; }
+        [XmlElement(IsNullable = true)]
         public PersonInfo Owner { get; set; }
+        #endregion
+        #region Constructors
+        public BuildingInfo() { }
+        public BuildingInfo(string arg, char delimiter = '/')
+        {
+            AssignValues(this, arg, TokenDelimiter = delimiter);
+        }
+        public BuildingInfo(params string[] args)
+        {
+            AssignValues(this, args);
+        }
         #endregion
     }
     #endregion

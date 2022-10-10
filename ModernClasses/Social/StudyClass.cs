@@ -16,8 +16,8 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: Student.cs 
-// Date: 2022, 10, 9, 오후 6:27
+// File: StudyClass.cs 
+// Date: 2022, 10, 11, 오전 12:36
 // Project: ModernClasses
 // Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
@@ -33,36 +33,50 @@ using System.Xml.Serialization;
 #region Program
 namespace ModernClasses.Social
 {
-    #region Class Student
+    #region Class StudyClass
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
-    public class Student : PersonInfo, IStudent
+    public class StudyClass : PropertyAccessor, IStudyClass
     {
         #region Properties
-        [XmlElement(IsNullable = true)]
-        public string School { get; set; }
+        [XmlAttribute]
+        public string Name { get; set; }
         [XmlElement(IsNullable = false)]
-        public StudentGrade Grade { get; set; }
+        public int NumberOfRegularClassParticipants { get; set; }
         [XmlElement(IsNullable = false)]
-        public StudentAcademicAchievementLevel LastAcademicAchievementLevel { get; set; }
+        public string RequiredPassLevel { get; set; }
+        [XmlElement(IsNullable = false)]
+        public List<KeyValuePair<DateTime, List<KeyValuePair<ITeacher, double>>>> ClassTimeTables { get; set; }
         [XmlElement(IsNullable = true)]
-        public List<KeyValuePair<IStudyClass, IStudentGrade>> StudyClasses { get; set; }
+        public List<KeyValuePair<DateTime, List<double>>> AttendanceRates { get; set; }
         [XmlElement(IsNullable = true)]
-        public IStudyClass HighestScoreClass { get; set; }
+        public List<KeyValuePair<DateTime, List<double>>> PassRates { get; set; }
         [XmlElement(IsNullable = true)]
-        public IStudyClass LowestScoreClass { get; set; }
+        public List<KeyValuePair<DateTime, Dictionary<IStudent, ITestScore>>> TestScores { get; set; }
+        [XmlElement(IsNullable = false)]
+        public TimeSpan RequiredStudyTime { get; set; }
         [XmlElement(IsNullable = true)]
-        public List<IStudyClass> FavoriteClasses { get; set; }
+        public List<KeyValuePair<DateTime, IStudent>> HighestTestScoreStudents { get; set; }
         [XmlElement(IsNullable = true)]
-        public List<ILearningRecord> LearningRecords { get; set; }
+        public List<KeyValuePair<DateTime, IStudent>> LowestTestScoreStudents { get; set; }
+        [XmlElement(IsNullable = false)]
+        public StudentAcademicAchievementLevel AcademicAchievementLevel { get; set; }
+        [XmlElement(IsNullable = true)]
+        public ITeacher TeacherInCharge { get; set; }
+        [XmlElement(IsNullable = true)]
+        public List<ITeacher> Teachers { get; set; }
+        [XmlElement(IsNullable = true)]
+        public List<KeyValuePair<double, ITeacher>> TeacherRankByPassRate { get; set; }
+        [XmlElement(IsNullable = true)]
+        public List<KeyValuePair<double, ITeacher>> TeacherRankByAttendanceRate { get; set; }
         #endregion
         #region Constructors
-        public Student() { }
-        public Student(string arg, char delimiter = '/')
+        public StudyClass() { }
+        public StudyClass(string arg, char delimiter = '/')
         {
             AssignValues(this, arg, TokenDelimiter = delimiter);
         }
-        public Student(params string[] args)
+        public StudyClass(params string[] args)
         {
             AssignValues(this, args);
         }

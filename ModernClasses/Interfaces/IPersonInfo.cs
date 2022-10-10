@@ -37,13 +37,13 @@ namespace ModernClasses.Interfaces
     {
         #region Properties
         NameInfo NameInfo { get; set; }
-        List<CompanyInfo> CompanyInfos { get; set; }
-        List<AddressInfo> AddressInfos { get; set; }
-        List<PhoneInfo> PhoneInfos { get; set; }
-        List<MailInfo> MailInfos { get; set; }
-        List<RelationInfo> RelationInfos { get; set; }
-        List<MessengerInfo> MessengerInfos { get; set; }
-        List<MemorialDayInfo> MemorialDayInfos { get; set; }
+        List<CompanyInfo> Companies { get; set; }
+        List<AddressInfo> Addresses { get; set; }
+        List<PhoneInfo> Phones { get; set; }
+        List<MailInfo> Mails { get; set; }
+        List<RelationInfo> Relations { get; set; }
+        List<MessengerInfo> Messengers { get; set; }
+        List<MemorialDayInfo> MemorialDays { get; set; }
         List<MedicalInfo> MedicalInfos { get; set; }
         #endregion
     }

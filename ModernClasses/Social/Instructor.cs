@@ -16,32 +16,53 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: ICompanyInfo.cs 
-// Date: 2022, 10, 6, 오후 10:40
+// File: Instructor.cs 
+// Date: 2022, 10, 10, 오후 11:01
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using ModernClasses.Social;
+using ModernClasses.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Interfaces
+namespace ModernClasses.Social
 {
-    #region Interface ICompanyInfo
+    #region Class Instructor
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo
+    [Serializable]
+    public class Instructor : PersonInfo, IInstructor
     {
         #region Properties
-        string Name { get; set; }
-        WebInfo WebInfo { get; set; }
-        List<BuildingInfo> Buildings { get; set; }
-        MailInfo MailInfo { get; set; }
-        string Department { get; set; }
-        string Position { get; set; }
+        [XmlArrayItem("Major")]
+        [XmlArray("Majors")]
+        public List<string> Majors { get; set; }
+        [XmlArrayItem("Subject")]
+        [XmlArray("SubjectsInCharge")]
+        public List<KeyValuePair<IStudyClass, List<double>>> SubjectsInCharge { get; set; }
+        [XmlArrayItem("ClassExperience")]
+        [XmlArray("ClassExperiences")]
+        public List<KeyValuePair<IStudyClass, List<double>>> StudyClassExperiences { get; set; }
+        [XmlElement(IsNullable = false)]
+        public TimeSpan Carrier { get; set; }
+        [XmlElement(IsNullable = false)]
+        public IPayInfo PayInfo { get; set; }
+        #endregion
+        #region Constructors
+        public Instructor() { }
+        public Instructor(string arg, char delimiter = '/')
+        {
+            AssignValues(this, arg, TokenDelimiter = delimiter);
+        }
+        public Instructor(params string[] args)
+        {
+            AssignValues(this, args);
+        }
         #endregion
     }
     #endregion

@@ -34,13 +34,7 @@ namespace ModernClasses.Interfaces
 {
     #region Interface IWebInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IWebInfo
-    {
-        #region Properties
-        string WebServer { get; set; }
-        string WebAccount { get; set; }
-        #endregion
-    }
+    public interface IWebInfo : IInternetServiceAccount { }
     #endregion
 }
 #endregion

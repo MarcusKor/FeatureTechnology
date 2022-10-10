@@ -35,25 +35,13 @@ namespace ModernClasses.Social
     #region Class WebInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
-    public class WebInfo : PropertyAccessor, IWebInfo
+    public class WebInfo : InternetServiceAccount, IWebInfo
     {
-        #region Properties
-        [XmlIgnore]
-        private string webServer;
-        [XmlAttribute]
-        public string WebServer
-        {
-            get => webServer ?? string.Empty;
-            set => webServer = value;
-        }
-        [XmlElement(IsNullable = true)]
-        public string WebAccount { get; set; }
-        #endregion
         #region Constructors
         public WebInfo() { }
         public WebInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public WebInfo(params string[] args)
         {

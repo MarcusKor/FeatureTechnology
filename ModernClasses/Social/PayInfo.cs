@@ -16,32 +16,46 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: ICompanyInfo.cs 
-// Date: 2022, 10, 6, 오후 10:40
+// File: PayInfo.cs 
+// Date: 2022, 10, 10, 오후 9:10
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using ModernClasses.Social;
-using System.Collections.Generic;
+using ModernClasses.Interfaces;
+using System;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Interfaces
+namespace ModernClasses.Social
 {
-    #region Interface ICompanyInfo
+    #region Class PayInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo
+    [Serializable]
+    public class PayInfo : PropertyAccessor, IPayInfo
     {
         #region Properties
-        string Name { get; set; }
-        WebInfo WebInfo { get; set; }
-        List<BuildingInfo> Buildings { get; set; }
-        MailInfo MailInfo { get; set; }
-        string Department { get; set; }
-        string Position { get; set; }
+        [XmlAttribute]
+        public string Name { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string Sender { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string Reciever { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string RemittanceBank { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Receipt { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string PaymentMethod { get; set; }
+        [XmlElement(IsNullable = true)]
+        public string Description { get; set; }
+        [XmlElement(IsNullable = false)]
+        public double Amount { get; set; }
+        [XmlElement(IsNullable = false)]
+        public DateTime PaymentDate { get; set; }
         #endregion
     }
     #endregion

@@ -16,44 +16,54 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: MedicalInfo.cs 
-// Date: 2022, 10, 7, 오전 12:14
+// File: LearningRecord.cs 
+// Date: 2022, 10, 10, 오후 11:23
 // Project: ModernClasses
 // Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
+using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 #endregion
 #region Program
 namespace ModernClasses.Social
 {
-    #region Class MedicalInfo
-    public class MedicalInfo : PropertyAccessor, IMedicalInfo
+    #region Class LearningRecord
+    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
+    [Serializable]
+    public class LearningRecord : PropertyAccessor, ILearningRecord
     {
         #region Properties
         [XmlElement(IsNullable = false)]
-        public string BloodType { get; set; }
-        [XmlArrayItem("Disease")]
-        [XmlArray("Diseases", IsNullable = true)]
-        public List<string> Diseases { get; set; }
-        [XmlArrayItem("VisitedHospital")]
-        [XmlArray("LatestVisitedHospital", IsNullable = true)]
-        public List<string> LatestVisitedHospital { get; set; }
-        [XmlArrayItem("ContactHospital")]
-        [XmlArray("EmergencyContactHospital", IsNullable = true)]
-        public List<string> EmergencyContactHospital { get; set; }
+        public IStudyClass StudyClass { get; set; }
+        [XmlElement(IsNullable = true)]
+        public IStudentGrade HighestGrade { get; set; }
+        [XmlElement(IsNullable = true)]
+        public IStudentGrade LowestGrade { get; set; }
+        [XmlElement(IsNullable = true)]
+        public IStudentGrade FinalGrade { get; set; }
+        [XmlArrayItem("TestResult")]
+        [XmlArrayItem("TestResults", IsNullable = true)]
+        public List<KeyValuePair<DateTime, ITestScore>> TestResults { get; set; }
+        [XmlElement(IsNullable = true)]
+        public uint NumberOfRetakes { get; set; }
+        [XmlElement(IsNullable = true)]
+        public uint NumberOfTest { get; set; }
+        [XmlElement(IsNullable = true)]
+        public uint NumberOfPass { get; set; }
         #endregion
         #region Constructors
-        public MedicalInfo() { }
-        public MedicalInfo(string arg, char delimiter = '/')
+        public LearningRecord() { }
+        public LearningRecord(string arg, char delimiter = '/')
         {
             AssignValues(this, arg, TokenDelimiter = delimiter);
         }
-        public MedicalInfo(params string[] args)
+        public LearningRecord(params string[] args)
         {
             AssignValues(this, args);
         }

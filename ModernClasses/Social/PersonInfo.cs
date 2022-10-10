@@ -42,30 +42,30 @@ namespace ModernClasses.Social
         #region Properties
         [XmlElement]
         public NameInfo NameInfo { get; set; }
-        [XmlArrayItem("CompanyInfo")]
-        [XmlArray("CompanyInfos", IsNullable = true)]
-        public List<CompanyInfo> CompanyInfos { get; set; }
+        [XmlArrayItem("Company")]
+        [XmlArray("Companys", IsNullable = true)]
+        public List<CompanyInfo> Companies { get; set; }
         [XmlArrayItem("Address")]
         [XmlArray("Addresses", IsNullable = true)]
-        public List<AddressInfo> AddressInfos { get; set; }
+        public List<AddressInfo> Addresses { get; set; }
         [XmlArrayItem("Phone")]
         [XmlArray("Phones", IsNullable = true)]
-        public List<PhoneInfo> PhoneInfos { get; set; }
+        public List<PhoneInfo> Phones { get; set; }
         [XmlArrayItem("MailAccount")]
         [XmlArray("MailAccounts", IsNullable = true)]
-        public List<MailInfo> MailInfos { get; set; }
-        [XmlArrayItem("MessengerInfo")]
-        [XmlArray("MessengerInfos", IsNullable = true)]
-        public List<MessengerInfo> MessengerInfos { get; set; }
+        public List<MailInfo> Mails { get; set; }
+        [XmlArrayItem("Messenger")]
+        [XmlArray("Messengers", IsNullable = true)]
+        public List<MessengerInfo> Messengers { get; set; }
         [XmlArrayItem("Web")]
         [XmlArray("WebAccounts", IsNullable = true)]
         public List<WebInfo> WebInfos { get; set; }
         [XmlArrayItem("RelationInfo")]
         [XmlArray("RelationInfos", IsNullable = true)]
-        public List<RelationInfo> RelationInfos { get; set; }
-        [XmlArrayItem("MemorialDayInfo")]
-        [XmlArray("MemorialDayInfos", IsNullable = true)]
-        public List<MemorialDayInfo> MemorialDayInfos { get; set; }
+        public List<RelationInfo> Relations { get; set; }
+        [XmlArrayItem("MemorialDay")]
+        [XmlArray("MemorialDays", IsNullable = true)]
+        public List<MemorialDayInfo> MemorialDays { get; set; }
         [XmlArrayItem("MedicalInfo")]
         [XmlArray("MedicalInfos", IsNullable = true)]
         public List<MedicalInfo> MedicalInfos { get; set; }
@@ -79,7 +79,7 @@ namespace ModernClasses.Social
         [XmlIgnore]
         public string Nick => NameInfo.NickNames.FirstOrDefault();
         [XmlIgnore]
-        public string? Address1 => AddressInfos.First()?.TokenizedString;
+        public string? Address1 => Addresses.First()?.TokenizedString;
         [XmlIgnore]
         public int Age => DateTime.Now.Year - BirthDay.Year;
         #endregion
@@ -87,7 +87,7 @@ namespace ModernClasses.Social
         public PersonInfo() { }
         public PersonInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public PersonInfo(params string[] args)
         {

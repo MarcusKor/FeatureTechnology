@@ -39,14 +39,8 @@ namespace ModernClasses.Social
     public class RelationInfo : PropertyAccessor, IRelationInfo
     {
         #region Properties
-        [XmlIgnore]
-        private string relationType;
         [XmlAttribute]
-        public string RelationType
-        {
-            get => relationType??string.Empty;
-            set => relationType = value;
-        }
+        public string RelationType { get; set; }
         [XmlElement(IsNullable = true)]
         public string FirstImpressions { get; set; }
         [XmlElement(IsNullable = true)]
@@ -59,7 +53,7 @@ namespace ModernClasses.Social
         public RelationInfo() { }
         public RelationInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public RelationInfo(params string[] args)
         {

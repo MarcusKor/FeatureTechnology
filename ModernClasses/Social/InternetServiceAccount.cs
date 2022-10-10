@@ -16,32 +16,30 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: ICompanyInfo.cs 
-// Date: 2022, 10, 6, 오후 10:40
+// File: InternetServiceAccount.cs 
+// Date: 2022, 10, 10, 오후 11:23
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
-using ModernClasses.Attributes;
-using ModernClasses.Social;
-using System.Collections.Generic;
+using ModernClasses.Interfaces;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Interfaces
+namespace ModernClasses.Social
 {
-    #region Interface ICompanyInfo
-    [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo
+    #region Class InternetServiceAccount
+    public class InternetServiceAccount : PropertyAccessor, IInternetServiceAccount
     {
         #region Properties
-        string Name { get; set; }
-        WebInfo WebInfo { get; set; }
-        List<BuildingInfo> Buildings { get; set; }
-        MailInfo MailInfo { get; set; }
-        string Department { get; set; }
-        string Position { get; set; }
+        [XmlAttribute]
+        public string UrlString { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string Server { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string Account { get; set; }
         #endregion
     }
     #endregion

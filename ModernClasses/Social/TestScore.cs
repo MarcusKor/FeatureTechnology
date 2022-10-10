@@ -16,32 +16,53 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: ICompanyInfo.cs 
-// Date: 2022, 10, 6, 오후 10:40
+// File: TestScore.cs 
+// Date: 2022, 10, 11, 오전 12:46
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
-using ModernClasses.Social;
-using System.Collections.Generic;
+using ModernClasses.Interfaces;
+using System;
+using System.Xml.Serialization;
 #endregion
-#region Program
-namespace ModernClasses.Interfaces
+#region Imports
+namespace ModernClasses.Social
 {
-    #region Interface ICompanyInfo
+    #region Class TestScore
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface ICompanyInfo
+    [Serializable]
+    public class TestScore : PropertyAccessor, ITestScore
     {
         #region Properties
-        string Name { get; set; }
-        WebInfo WebInfo { get; set; }
-        List<BuildingInfo> Buildings { get; set; }
-        MailInfo MailInfo { get; set; }
-        string Department { get; set; }
-        string Position { get; set; }
+        [XmlAttribute]
+        public string Name { get; set; }
+        [XmlElement(IsNullable = false)]
+        public string Value { get; set; }
+        [XmlElement(IsNullable = false)]
+        public Type DataType { get; set; }
+        [XmlElement(IsNullable = false)]
+        public DateTime BeginTime { get; set; }
+        [XmlElement(IsNullable = false)]
+        public DateTime EndTime { get; set; }
+        [XmlElement(IsNullable = false)]
+        public DateTime TestTime { get; set; }
+        [XmlElement(IsNullable = false)]
+        public TimeSpan TestDuration { get; set; }
+        #endregion
+        #region Constructors
+        public TestScore() { }
+        public TestScore(string arg, char delimiter = '/')
+        {
+            AssignValues(this, arg, TokenDelimiter = delimiter);
+        }
+        public TestScore(params string[] args)
+        {
+            AssignValues(this, args);
+        }
         #endregion
     }
     #endregion

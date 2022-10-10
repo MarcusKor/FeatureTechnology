@@ -39,10 +39,10 @@ namespace ModernClasses.Interfaces
         string Name { get; set; }
         TimeSpan StudyTime { get; set; }
         int TotalNumberOfRegularClassParticipants { get; set; }
-        Dictionary<IStudyClass, List<ITeacher>> Subjects { get; set; }
-        List<KeyValuePair<DateTime, double>> AttendanceRate { get; set; }
-        List<KeyValuePair<DateTime, double>> PassRate { get; set; }
-        Dictionary<DateTime, KeyValuePair<ITestScore, List<IStudent>>> TestScores { get; set; }
+        List<KeyValuePair<IStudyClass, List<ITeacher>>> Subjects { get; set; }
+        List<KeyValuePair<DateTime, double>> AttendanceRates { get; set; }
+        List<KeyValuePair<DateTime, double>> PassRates { get; set; }
+        List<KeyValuePair<DateTime, KeyValuePair<ITestScore, List<IStudent>>>> TestScores { get; set; }
         List<KeyValuePair<ITestScore, List<IStudent>>> HighestTestScoreStudents { get; set; }
         List<KeyValuePair<ITestScore, List<IStudent>>> LowestTestScoreStudents { get; set; }
         List<KeyValuePair<ITestScore, List<IStudent>>> TestPassedStudents { get; set; }

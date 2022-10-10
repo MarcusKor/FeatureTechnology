@@ -16,31 +16,53 @@
 // software binaries and libraries at the top of the "License.txt" file, and
 // comply with the license rules and exceptions.
 ///////////////////////////////////////////////////////////////////////////////
-// File: IInstructor.cs 
-// Date: 2022, 10, 9, 오후 9:31
+// File: StudentGrade.cs 
+// Date: 2022, 10, 11, 오전 12:31
 // Project: ModernClasses
-// Namespace: ModernClasses.Interfaces
+// Namespace: ModernClasses.Social
 // Author: Marcus - IL HWAN, JEONG (master@vs3codefactory.com)
 ///////////////////////////////////////////////////////////////////////////////
 #endregion
 #region Imports
 using ModernClasses.Attributes;
+using ModernClasses.Interfaces;
 using System;
-using System.Collections.Generic;
+using System.Xml.Serialization;
 #endregion
 #region Program
-namespace ModernClasses.Interfaces
+namespace ModernClasses.Social
 {
-    #region Interface IInstructor
+    #region Class StudentGrade
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
-    public interface IInstructor : IPersonInfo
+    [Serializable]
+    public class StudentGrade : PropertyAccessor, IStudentGrade
     {
         #region Properties
-        List<string> Majors { get; set; }
-        List<KeyValuePair<IStudyClass, List<double>>> SubjectsInCharge { get; set; } // NumberOfRetakes,TotalTeachingTime,AttendanceRate,PassRate
-        List<KeyValuePair<IStudyClass, List<double>>> StudyClassExperiences { get; set; } // NumberOfRetakes,TotalTeachingTime,AttendanceRate,PassRate
-        TimeSpan Carrier { get; set; } // Total experiences
-        IPayInfo PayInfo { get; set; }
+        [XmlElement(IsNullable = false)]
+        public IStudyClass Subject { get; set; }
+        [XmlElement(IsNullable = false)]
+        public bool IsPassed { get; }
+        [XmlElement(IsNullable = false)]
+        public uint NumberOfRetakes { get; set; }
+        [XmlElement(IsNullable = false)]
+        public double AttendanceRate { get; set; }
+        [XmlElement(IsNullable = false)]
+        public ITestScore AchievedScore { get; set; }
+        [XmlElement(IsNullable = false)]
+        public StudentAcademicAchievementLevel AcademicAchievementLevel { get; set; }
+        [XmlElement(IsNullable = false)]
+        public TimeSpan TotalStudyTime { get; set; }
+        #endregion
+        #region Constructors
+        public StudentGrade() { }
+        public StudentGrade(string arg, char delimiter = '/')
+        {
+            AssignValues(this, arg, TokenDelimiter = delimiter);
+        }
+        public StudentGrade(params string[] args)
+        {
+            AssignValues(this, args);
+        }
         #endregion
     }
     #endregion

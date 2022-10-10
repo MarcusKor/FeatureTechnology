@@ -35,25 +35,13 @@ namespace ModernClasses.Social
     #region Class MessengerInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
-    public class MessengerInfo : PropertyAccessor, IMessengerInfo
+    public class MessengerInfo : InternetServiceAccount, IMessengerInfo
     {
-        #region Properties
-        [XmlIgnore]
-        private string messengerServer;
-        [XmlAttribute]
-        public string MessengerServer 
-        {
-            get => messengerServer??string.Empty;
-            set => messengerServer = value;
-        }
-        [XmlElement]
-        public string MessengerAccount { get; set; }
-        #endregion
         #region Constructors
         public MessengerInfo() { }
         public MessengerInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public MessengerInfo(params string[] args)
         {

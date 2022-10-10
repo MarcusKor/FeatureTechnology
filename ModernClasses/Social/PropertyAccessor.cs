@@ -50,10 +50,7 @@ namespace ModernClasses.Social
         #region Protected methods
         #endregion
         #region Public methods
-        public static PropertyInfo? GetProperty(string property, object src, CaseConversionType caseConversionType = 0)
-        {
-            return GetProperties(src)?.Where(x => x.Name == property).FirstOrDefault();
-        }
+        public static PropertyInfo? GetProperty(string property, object src, CaseConversionType caseConversionType = 0) => GetProperties(src)?.Where(x => x.Name == property).FirstOrDefault();
         public static string[]? GetAllPropertyNames(object src, CaseConversionType caseConversion = CaseConversionType.None)
         {
             var type = src.GetType();
@@ -73,12 +70,10 @@ namespace ModernClasses.Social
         {
             var type = src.GetType();
             var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
-            return properties != null ? properties.ToArray() : null;
+            return properties?.ToArray();
         }
-        public static bool AssignValues(object src, string args, char delimiter = '/')
-        {   // Assign tokenized values
-            return string.IsNullOrEmpty(args) ? false : AssignValues(src, args.Split(delimiter));
-        }
+        // Assign tokenized values
+        public static bool AssignValues(object src, string args, char delimiter = '/') => !string.IsNullOrEmpty(args) && AssignValues(src, args.Split(delimiter));
         public static bool AssignValues(object src, params string[] args)
         {
             bool result = false;

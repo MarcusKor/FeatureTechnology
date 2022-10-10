@@ -43,6 +43,7 @@ namespace ModernClasses.Interfaces
         DateTime BeginTime { get; set; }
         DateTime EndTime { get; set; }
         DateTime TestTime { get; set; }
+        TimeSpan TestDuration { get; set; }
         #endregion
     }
     #endregion

@@ -61,7 +61,7 @@ namespace ModernClasses.Social
         public NameInfo() { }
         public NameInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public NameInfo(params string[] args)
         {

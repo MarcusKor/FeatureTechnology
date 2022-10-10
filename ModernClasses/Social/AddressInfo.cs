@@ -38,26 +38,28 @@ namespace ModernClasses.Social
     [Serializable]
     public class AddressInfo : PropertyAccessor, IAddressInfo
     {
+        #region Fields
+        [XmlIgnore]
+        protected string residenceType;
+        [XmlIgnore]
+        protected string siteUrl;
+        [XmlIgnore]
+        protected string geoGraphicLocation;
+        #endregion
         #region Properties
 
-        [XmlIgnore]
-        private string? residenceType { get; set; }
         [XmlAttribute]
         public string ResidenceType
         {
             get => residenceType ?? string.Empty;
             set => residenceType = value;
         }
-        [XmlIgnore]
-        private string? siteUrl { get; set; }
         [XmlAttribute]
         public string SiteUrl
         {
             get => siteUrl ?? string.Empty;
             set => siteUrl = value;
         }
-        [XmlIgnore]
-        private string? geoGraphicLocation { get; set; }
         [XmlAttribute]
         public string GeographicLocation
         {
@@ -81,7 +83,7 @@ namespace ModernClasses.Social
         public AddressInfo() { }
         public AddressInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public AddressInfo(params string[] args)
         {

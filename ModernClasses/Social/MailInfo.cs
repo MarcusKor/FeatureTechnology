@@ -38,25 +38,13 @@ namespace ModernClasses.Social
     #region Class MailInfo
     [Author("IL HWAN, JEONG", "Marcus", 1.0)]
     [Serializable]
-    public class MailInfo : PropertyAccessor, IMailInfo
+    public class MailInfo : InternetServiceAccount, IMailInfo
     {
-        #region Properties
-        [XmlIgnore]
-        private string mailServer;
-        [XmlAttribute]
-        public string MailServer
-        {
-            get => mailServer ?? string.Empty;
-            set => mailServer = value;
-        }
-        [XmlElement(IsNullable = true)]
-        public string MailAccount { get; set; }
-        #endregion
         #region Constructors
         public MailInfo() { }
         public MailInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public MailInfo(params string[] args)
         {

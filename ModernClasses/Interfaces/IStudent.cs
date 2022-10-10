@@ -38,7 +38,7 @@ namespace ModernClasses.Interfaces
         #region Properties
         string School { get; set; }
         StudentAcademicAchievementLevel LastAcademicAchievementLevel { get; set; }
-        Dictionary<IStudyClass, IStudentGrade> StudyClasses { get; set; }
+        List<KeyValuePair<IStudyClass, IStudentGrade>> StudyClasses { get; set; }
         IStudyClass HighestScoreClass { get; }
         IStudyClass LowestScoreClass { get; }
         List<IStudyClass> FavoriteClasses { get; set; }

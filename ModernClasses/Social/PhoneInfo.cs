@@ -38,14 +38,8 @@ namespace ModernClasses.Social
     public class PhoneInfo : PropertyAccessor, IPhoneInfo
     {
         #region Properties
-        [XmlIgnore]
-        private string phoneType;
         [XmlAttribute]
-        public string PhoneType
-        {
-            get => phoneType ?? string.Empty;
-            set => phoneType = value; 
-        }
+        public string PhoneType { get; set; }
         [XmlElement(IsNullable = true)]
         public string PhoneNumber { get; set; }
         [XmlElement(IsNullable = true)]
@@ -57,7 +51,7 @@ namespace ModernClasses.Social
         public PhoneInfo() { }
         public PhoneInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public PhoneInfo(params string[] args)
         {

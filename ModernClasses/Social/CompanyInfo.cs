@@ -27,6 +27,7 @@
 using ModernClasses.Attributes;
 using ModernClasses.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 #endregion
 #region Program
@@ -38,18 +39,12 @@ namespace ModernClasses.Social
     public class CompanyInfo : PropertyAccessor, ICompanyInfo
     {
         #region Properties
-        [XmlIgnore]
-        private string companyName;
         [XmlAttribute]
-        public string CompanyName
-        {
-            get => companyName??string.Empty;
-            set => companyName = value;
-        }
+        public string Name { get; set; }
         [XmlElement(IsNullable = true)]
         public WebInfo WebInfo { get; set; }
         [XmlElement(IsNullable = true)]
-        public AddressInfo AddressInfo { get; set; }
+        public List<BuildingInfo> Buildings { get; set; }
         [XmlElement(IsNullable = true)]
         public MailInfo MailInfo { get; set; }
         [XmlElement(IsNullable = true)]
@@ -61,7 +56,7 @@ namespace ModernClasses.Social
         public CompanyInfo() { }
         public CompanyInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public CompanyInfo(params string[] args)
         {

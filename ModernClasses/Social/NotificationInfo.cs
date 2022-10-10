@@ -53,7 +53,7 @@ namespace ModernClasses.Social
         public NotificationInfo() { }
         public NotificationInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public NotificationInfo(params string[] args)
         {

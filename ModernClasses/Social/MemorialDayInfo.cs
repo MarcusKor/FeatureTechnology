@@ -59,7 +59,7 @@ namespace ModernClasses.Social
         public MemorialDayInfo() { }
         public MemorialDayInfo(string arg, char delimiter = '/')
         {
-            AssignValues(this, arg, delimiter);
+            AssignValues(this, arg, TokenDelimiter = delimiter);
         }
         public MemorialDayInfo(params string[] args)
         {
